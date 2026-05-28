@@ -293,6 +293,63 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
   text-align:center;color:var(--text-mute);
   font-size:.8rem;padding:0 16px 32px;margin-top:18px;
 }
+
+/* ====== INFO SECTION ====== */
+.info-section{margin-top:20px}
+.info-head{
+  font-family:'Amiri',serif;color:var(--navy-deep);
+  font-size:1.25rem;font-weight:700;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.info-head::before{
+  content:'';display:block;width:4px;height:20px;
+  background:var(--navy-mid);border-radius:2px;
+}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:380px){.info-grid{grid-template-columns:1fr}}
+.info-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:16px 14px;
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--text);
+  transition:border-color .2s,box-shadow .2s,transform .12s;
+  box-shadow:0 2px 12px rgba(12,24,64,.06);
+}
+.info-card:hover{
+  border-color:var(--navy-mid);
+  box-shadow:0 6px 20px rgba(36,72,176,.12);
+  transform:translateY(-1px);
+}
+.info-ic{
+  width:46px;height:46px;border-radius:13px;flex:none;
+  background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;
+}
+.info-ic svg{width:24px;height:24px;fill:#fff}
+.info-ic.tt{background:#000}
+.info-ic.wa{background:#25d366}
+.info-label{font-weight:800;font-size:.92rem;color:var(--navy-deep)}
+.info-sub{font-size:.8rem;color:var(--text-mute);margin-top:2px}
+.info-arrow{margin-right:auto;color:var(--navy-mid);font-size:1.3rem}
+
+.map-wrap{
+  border-radius:16px;overflow:hidden;
+  border:1.5px solid var(--border);
+  box-shadow:0 4px 16px rgba(12,24,64,.08);
+  position:relative;
+}
+.map-wrap iframe{display:block;width:100%;height:220px;border:none}
+.map-overlay-btn{
+  position:absolute;bottom:10px;left:10px;
+  background:var(--navy-deep);color:#fff;
+  border:none;border-radius:10px;padding:8px 14px;
+  font-family:inherit;font-size:.82rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;gap:6px;
+  box-shadow:0 4px 12px rgba(12,24,64,.3);
+  text-decoration:none;
+}
+.map-overlay-btn:hover{background:var(--navy-mid)}
 </style>
 </head>
 <body>
@@ -571,6 +628,79 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 
     </div>
   </div>
+  <!-- ====== INFO SECTION ====== -->
+  <div class="info-section">
+    <div class="info-head">تواصل معنا وتجدنا</div>
+
+    <div class="info-grid">
+
+      <!-- الموقع -->
+      <a class="info-card" href="https://maps.app.goo.gl/bXPATVnaMRz3xRDd9" target="_blank" rel="noopener">
+        <div class="info-ic">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">موقعنا</div>
+          <div class="info-sub">حي ج7 — الطائف</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- واتساب -->
+      <a class="info-card" href="https://wa.me/966540351119" target="_blank" rel="noopener">
+        <div class="info-ic wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.859 1.426 5.481L2.003 22l4.686-1.394c1.565.838 3.339 1.314 5.219 1.314 5.52 0 9.999-4.484 9.999-10.017C21.997 6.484 17.518 2 12 2z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">واتساب</div>
+          <div class="info-sub">0540351119</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- تيك توك -->
+      <a class="info-card" href="https://www.tiktok.com/@yymk1119" target="_blank" rel="noopener">
+        <div class="info-ic tt">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.79 1.52V6.79a4.85 4.85 0 01-1.02-.1z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">تيك توك</div>
+          <div class="info-sub">@yymk1119</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- العنوان -->
+      <div class="info-card" style="cursor:default">
+        <div class="info-ic">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">العنوان</div>
+          <div class="info-sub">8090 السلمانية 178<br>حي ج7 — الطائف 26314</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- الخريطة -->
+    <div class="map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=مربط+الواصلية+الطائف+السعودية&z=15&output=embed"
+        loading="lazy"
+        allowfullscreen
+        title="موقع مربط الواصلية">
+      </iframe>
+      <a class="map-overlay-btn"
+         href="https://maps.app.goo.gl/bXPATVnaMRz3xRDd9"
+         target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        فتح في خرائط قوقل
+      </a>
+    </div>
+
+  </div>
+
   <p class="foot">© مربط الواصلية — جميع الحقوق محفوظة</p>
 </main>
 
