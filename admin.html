@@ -245,6 +245,7 @@ tr:hover td{background:var(--navy-bg)}
             <th>الخدمة</th>
             <th>التفاصيل</th>
             <th>المدة</th>
+            <th>الدفع</th>
             <th>الإجمالي</th>
             <th>الحالة</th>
             <th>التاريخ</th>
@@ -275,8 +276,10 @@ tr:hover td{background:var(--navy-bg)}
   <button class="status-opt" onclick="setStatus('ملغي')">❌ ملغي</button>
 </div>
 
+<script src="db.js"></script>
 <script>
-const PASS = 'wasilia2026';
+/* غيّر كلمة المرور من هنا متى شئت */
+const PASS = 'Wasilia@1119';
 let editRef = null;
 
 /* ====== LOGIN ====== */
@@ -294,20 +297,16 @@ function showPanel(){
   render();
 }
 
-/* ====== DATA ====== */
-function getData(){ return JSON.parse(localStorage.getItem('wsl_bookings')||'[]') }
-function saveData(d){ localStorage.setItem('wsl_bookings',JSON.stringify(d)) }
-
 /* ====== RENDER ====== */
-function render(){
+async function render(){
   const q=(document.getElementById('search').value||'').trim().toLowerCase();
   const fc=document.getElementById('filterCat').value;
   const fs=document.getElementById('filterStatus').value;
 
-  let data=getData().slice().reverse();
+  const all=await WSL.getAll();
+  let data=all.slice().reverse();
 
   // stats on full data
-  const all=getData();
   const today=new Date().toISOString().split('T')[0];
   document.getElementById('sTotal').textContent=all.length;
   document.getElementById('sRevenue').textContent=all.reduce((s,b)=>s+(+b.total||0),0).toLocaleString('en-US');
@@ -345,11 +344,12 @@ function render(){
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.859 1.426 5.481L2.003 22l4.686-1.394c1.565.838 3.339 1.314 5.219 1.314 5.52 0 9.999-4.484 9.999-10.017C21.997 6.484 17.518 2 12 2z"/></svg>'+
         esc(b.phone)+
       '</a></td>'+
-      '<td class="horse-cell">'+esc(b.horseName||'—')+'<br>'+esc((b.horseGender||'')+' — '+(b.horseAge||'')+'س'+(+b.horseCount>1?' ×'+b.horseCount:''))+'</td>'+
+      '<td class="horse-cell">'+(b.horseName?esc(b.horseName)+'<br>'+esc((b.horseGender||'')+' — '+(b.horseAge||'')+'س'+(+b.horseCount>1?' ×'+b.horseCount:'')):'—')+'</td>'+
       '<td>'+arr+'</td>'+
       '<td>'+esc(b.category||'—')+'</td>'+
       '<td style="max-width:200px;font-size:.8rem;color:var(--text-sub)">'+esc(b.items||'—')+'</td>'+
       '<td style="white-space:nowrap">'+esc(b.duration||'—')+'</td>'+
+      '<td style="white-space:nowrap;font-size:.8rem">'+esc(b.payment||'—')+'</td>'+
       '<td><b>'+((b.total||0).toLocaleString('en-US'))+'</b></td>'+
       '<td><button class="badge '+scls+'" onclick="openMenu(\''+esc(b.ref||'')+'\')">'+status+'</button></td>'+
       '<td style="white-space:nowrap;font-size:.78rem;color:var(--text-mute)">'+cs+'</td>'+
@@ -369,24 +369,23 @@ function closeMenu(){
   document.getElementById('overlay').style.display='none';
   document.getElementById('statusMenu').style.display='none';
 }
-function setStatus(s){
+async function setStatus(s){
   if(!editRef) return;
-  const data=getData().map(b=>b.ref===editRef?{...b,status:s}:b);
-  saveData(data);
+  await WSL.setStatus(editRef,s);
   closeMenu();
   render();
 }
 
 /* ====== DELETE ====== */
-function del(ref){
+async function del(ref){
   if(!confirm('حذف الحجز رقم '+ref+'؟')) return;
-  saveData(getData().filter(b=>b.ref!==ref));
+  await WSL.remove(ref);
   render();
 }
 
 /* ====== EXPORT ====== */
-function exportXL(){
-  const data=getData();
+async function exportXL(){
+  const data=await WSL.getAll();
   if(!data.length){ alert('لا توجد حجوزات للتصدير.'); return; }
   const rows=data.map(b=>({
     'رقم الطلب':  b.ref,
@@ -400,6 +399,7 @@ function exportXL(){
     'الوصول':     b.arrive,
     'الخدمة':     b.category,
     'المدة':      b.duration,
+    'طريقة الدفع':b.payment,
     'التفاصيل':   b.items,
     'الملاحظات':  b.notes,
     'الإجمالي':   b.total,
@@ -407,7 +407,7 @@ function exportXL(){
     'تاريخ الطلب':b.createdAt?new Date(b.createdAt).toLocaleString('en-GB'):''
   }));
   const ws=XLSX.utils.json_to_sheet(rows);
-  ws['!cols']=[{wch:16},{wch:22},{wch:14},{wch:14},{wch:10},{wch:8},{wch:14},{wch:6},{wch:12},{wch:8},{wch:8},{wch:40},{wch:30},{wch:12},{wch:8},{wch:20}];
+  ws['!cols']=[{wch:16},{wch:22},{wch:14},{wch:14},{wch:10},{wch:8},{wch:14},{wch:6},{wch:12},{wch:8},{wch:8},{wch:12},{wch:40},{wch:30},{wch:12},{wch:8},{wch:20}];
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'الحجوزات');
   XLSX.writeFile(wb,'حجوزات_مربط_الواصلية.xlsx');
