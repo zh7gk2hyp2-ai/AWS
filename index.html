@@ -293,6 +293,88 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
   text-align:center;color:var(--text-mute);
   font-size:.8rem;padding:0 16px 32px;margin-top:18px;
 }
+
+/* ====== INFO SECTION ====== */
+.info-section{margin-top:20px}
+.info-head{
+  font-family:'Amiri',serif;color:var(--navy-deep);
+  font-size:1.25rem;font-weight:700;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.info-head::before{
+  content:'';display:block;width:4px;height:20px;
+  background:var(--navy-mid);border-radius:2px;
+}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:380px){.info-grid{grid-template-columns:1fr}}
+.info-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:16px 14px;
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--text);
+  transition:border-color .2s,box-shadow .2s,transform .12s;
+  box-shadow:0 2px 12px rgba(12,24,64,.06);
+}
+.info-card:hover{
+  border-color:var(--navy-mid);
+  box-shadow:0 6px 20px rgba(36,72,176,.12);
+  transform:translateY(-1px);
+}
+.info-ic{
+  width:46px;height:46px;border-radius:13px;flex:none;
+  background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;
+}
+.info-ic svg{width:24px;height:24px;fill:#fff}
+.info-ic.tt{background:#000}
+.info-ic.wa{background:#25d366}
+.info-label{font-weight:800;font-size:.92rem;color:var(--navy-deep)}
+.info-sub{font-size:.8rem;color:var(--text-mute);margin-top:2px}
+.info-arrow{margin-right:auto;color:var(--navy-mid);font-size:1.3rem}
+
+.map-wrap{
+  border-radius:16px;overflow:hidden;
+  border:1.5px solid var(--border);
+  box-shadow:0 4px 16px rgba(12,24,64,.08);
+  position:relative;
+}
+.map-wrap iframe{display:block;width:100%;height:220px;border:none}
+.map-overlay-btn{
+  position:absolute;bottom:10px;left:10px;
+  background:var(--navy-deep);color:#fff;
+  border:none;border-radius:10px;padding:8px 14px;
+  font-family:inherit;font-size:.82rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;gap:6px;
+  box-shadow:0 4px 12px rgba(12,24,64,.3);
+  text-decoration:none;
+}
+.map-overlay-btn:hover{background:var(--navy-mid)}
+
+/* ====== WHY-US FEATURES ====== */
+.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 6px}
+@media(max-width:380px){.features{grid-template-columns:1fr}}
+.feature{
+  display:flex;align-items:center;gap:10px;
+  background:var(--navy-bg);border:1px solid var(--navy-pale);
+  border-radius:12px;padding:11px 12px;
+}
+.feature-ic{
+  width:34px;height:34px;border-radius:9px;flex:none;
+  background:var(--navy-deep);display:flex;align-items:center;justify-content:center;
+}
+.feature-ic svg{width:18px;height:18px;fill:#fff}
+.feature-txt{font-size:.85rem;font-weight:700;color:var(--navy-deep);line-height:1.4}
+
+/* ====== TESTIMONIALS ====== */
+.reviews{display:grid;gap:12px;margin-bottom:8px}
+.review{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(12,24,64,.06);
+}
+.review-stars{color:#f5a623;font-size:.95rem;letter-spacing:2px;margin-bottom:6px}
+.review-text{font-size:.9rem;color:var(--text);line-height:1.8}
+.review-author{font-size:.82rem;color:var(--text-mute);margin-top:8px;font-weight:700}
 </style>
 </head>
 <body>
@@ -300,45 +382,7 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 <!-- ====== HEADER ====== -->
 <header class="header">
   <div class="logo-wrap">
-    <!-- شعار الحصان -->
-    <svg viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg" color="white">
-      <!-- رأس الحصان (يمين، أعلى) -->
-      <path d="M152 18 C160 11 178 15 183 29 C188 44 180 62 167 68 C158 72 148 69 143 59 C137 48 140 32 149 22 Z"
-            stroke="currentColor" stroke-width="5.5" fill="none" stroke-linejoin="round"/>
-      <!-- أنف / خطم -->
-      <path d="M179 36 C187 36 194 31 194 25"
-            stroke="currentColor" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-      <!-- لجام -->
-      <path d="M167 65 C175 68 182 63 184 55"
-            stroke="currentColor" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-      <!-- أذن -->
-      <path d="M152 18 C155 8 163 5 166 13"
-            stroke="currentColor" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-      <!-- خط الرقبة إلى الجسم -->
-      <path d="M140 70 C132 82 122 95 112 106"
-            stroke="currentColor" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-      <!-- خصلة العرف 1 (الخارجية) -->
-      <path d="M150 22 C125 36 98 51 68 68"
-            stroke="currentColor" stroke-width="5.8" fill="none" stroke-linecap="round"/>
-      <!-- خصلة العرف 2 -->
-      <path d="M153 34 C128 47 102 62 72 79"
-            stroke="currentColor" stroke-width="4.2" fill="none" stroke-linecap="round"/>
-      <!-- خصلة العرف 3 (الداخلية) -->
-      <path d="M156 46 C131 59 105 74 76 91"
-            stroke="currentColor" stroke-width="3.0" fill="none" stroke-linecap="round"/>
-      <!-- قوس الجسم (صدر/بطن) من اليسار إلى الرقبة -->
-      <path d="M32 165 C20 143 22 118 40 101 C60 83 88 79 112 83 C118 85 118 100 112 106"
-            stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/>
-      <!-- خط الظهر من اليسار إلى الأرداف -->
-      <path d="M32 165 C55 177 88 182 128 175 C158 169 182 156 196 140"
-            stroke="currentColor" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-      <!-- ذيل / أرداف -->
-      <path d="M196 140 C210 127 222 133 223 148 C224 163 212 174 197 169"
-            stroke="currentColor" stroke-width="5.8" fill="none" stroke-linecap="round"/>
-      <!-- إغلاق الذيل -->
-      <path d="M197 169 C186 165 182 155 190 148"
-            stroke="currentColor" stroke-width="4.2" fill="none" stroke-linecap="round"/>
-    </svg>
+    <img src="logo.svg" alt="شعار مربط الواصلية" style="width:66px;height:60px;filter:brightness(0) invert(1)">
   </div>
   <div class="brand">مربط الواصلية</div>
   <div class="brand-sub">الإيواء والتدريب — حيث تليق بخيلك العناية</div>
@@ -363,15 +407,33 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
         <h2>مرحبًا في مربط الواصلية</h2>
         <p class="lead">
           يسعدنا استقبال طلبك لحجز خدمات الإيواء أو التدريب. نوفّر بيئة آمنة ومجهّزة وفريقًا متمرّسًا يعتني بخيلك كما تحب.
-          <br><br>
-          أربع خطوات بسيطة: اختيار الخدمة ← بياناتك ← بيانات الخيل ← التأكيد.
         </p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div>
+            <div class="feature-txt">بيئة آمنة ومجهّزة</div>
+          </div>
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6z"/></svg></div>
+            <div class="feature-txt">فريق متمرّس</div>
+          </div>
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11h-1a1 1 0 0 1-1-1V7a1 1 0 1 1 2 0v4h1a1 1 0 1 1 0 2z"/></svg></div>
+            <div class="feature-txt">عناية يومية وإشراف</div>
+          </div>
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4.5 12.5h5L8 22l9.5-12h-5z"/></svg></div>
+            <div class="feature-txt">تدريب احترافي</div>
+          </div>
+        </div>
+
         <div class="nav"><button class="btn btn-navy" onclick="go(1)">ابدأ الحجز ←</button></div>
       </section>
 
       <!-- PANEL 1 · اختيار نوع الخدمة (أولاً) -->
       <section class="panel" data-p="1">
-        <div class="eye">الخطوة 1 من 4</div>
+        <div class="eye">الخطوة الأولى</div>
         <h2>ماذا تريد أن تحجز؟</h2>
         <p class="lead" style="font-size:.92rem;margin-bottom:16px">اختر نوع الخدمة للمتابعة.</p>
         <div class="cat-grid">
@@ -403,7 +465,7 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 
       <!-- PANEL 2 · بيانات صاحب الخيل -->
       <section class="panel" data-p="2">
-        <div class="eye">الخطوة 2 من 4</div>
+        <div class="eye" id="eyePersonal">الخطوة 2</div>
         <h2>بياناتك الشخصية</h2>
         <div class="field" id="f-name">
           <label>الاسم الثلاثي</label>
@@ -430,6 +492,7 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
       <section class="panel" data-p="3">
         <div class="eye">الخطوة 3 من 4</div>
         <h2>بيانات الخيل</h2>
+        <p class="lead" style="font-size:.88rem;margin-bottom:6px">هذه الخطوة خاصة بحجز الإيواء.</p>
         <div class="field" id="f-hname">
           <label>اسم الخيل</label>
           <input id="hname" type="text" placeholder="مثال: الصواعق">
@@ -476,7 +539,7 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 
       <!-- PANEL 4 · تفاصيل الخدمة -->
       <section class="panel" data-p="4">
-        <div class="eye">الخطوة 4 من 4</div>
+        <div class="eye" id="eyeDetails">الخطوة الأخيرة</div>
         <h2 id="svcTitle">تفاصيل الخدمة</h2>
 
         <!-- إيواء -->
@@ -560,6 +623,32 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
           </div>
         </div>
 
+        <!-- طريقة الدفع -->
+        <div class="sec-title" style="margin-top:20px">طريقة الدفع</div>
+        <div class="opt sel" id="pay-cash" onclick="pickPay('cash')">
+          <input type="radio" name="pay" checked>
+          <div class="opt-info">
+            <div class="opt-name">الدفع عند الوصول</div>
+            <div class="opt-meta">نقداً أو شبكة عند تسليم الخيل</div>
+          </div>
+        </div>
+        <div class="opt" id="pay-transfer" onclick="pickPay('transfer')">
+          <input type="radio" name="pay">
+          <div class="opt-info">
+            <div class="opt-name">تحويل بنكي</div>
+            <div class="opt-meta">حوّل المبلغ وأرفق الإيصال عبر واتساب</div>
+          </div>
+        </div>
+        <div id="bankBox" style="display:none;background:var(--navy-bg);border:1.5px solid var(--navy-pale);border-radius:13px;padding:14px 16px;margin-bottom:10px">
+          <div style="font-weight:800;color:var(--navy-deep);font-size:.9rem;margin-bottom:6px">بيانات التحويل</div>
+          <div style="font-size:.85rem;color:var(--text-sub);line-height:1.9">
+            البنك: <b>—</b><br>
+            اسم المستفيد: <b>مربط الواصلية</b><br>
+            الآيبان: <b dir="ltr">SA00 0000 0000 0000 0000 0000</b>
+          </div>
+          <div style="font-size:.78rem;color:var(--text-mute);margin-top:6px">حدّث بيانات الحساب من المالك.</div>
+        </div>
+
         <!-- ملاحظات -->
         <div class="field" style="margin-top:18px">
           <label>ملاحظات خاصة <span class="opt">(اختياري)</span></label>
@@ -579,7 +668,7 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
         </div>
 
         <div class="nav">
-          <button class="btn btn-outline" onclick="go(3)">رجوع</button>
+          <button class="btn btn-outline" onclick="backFromDetails()">رجوع</button>
           <button class="btn btn-navy" onclick="submit()">تأكيد الحجز ✓</button>
         </div>
       </section>
@@ -609,17 +698,122 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 
     </div>
   </div>
+  <!-- ====== INFO SECTION ====== -->
+  <div class="info-section">
+    <div class="info-head">تواصل معنا وتجدنا</div>
+
+    <div class="info-grid">
+
+      <!-- الموقع -->
+      <a class="info-card" href="https://maps.app.goo.gl/bXPATVnaMRz3xRDd9" target="_blank" rel="noopener">
+        <div class="info-ic">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">موقعنا</div>
+          <div class="info-sub">حي ج7 — الطائف</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- واتساب -->
+      <a class="info-card" href="https://wa.me/966540351119" target="_blank" rel="noopener">
+        <div class="info-ic wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.859 1.426 5.481L2.003 22l4.686-1.394c1.565.838 3.339 1.314 5.219 1.314 5.52 0 9.999-4.484 9.999-10.017C21.997 6.484 17.518 2 12 2z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">واتساب</div>
+          <div class="info-sub">0540351119</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- تيك توك -->
+      <a class="info-card" href="https://www.tiktok.com/@yymk1119" target="_blank" rel="noopener">
+        <div class="info-ic tt">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.79 1.52V6.79a4.85 4.85 0 01-1.02-.1z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">تيك توك</div>
+          <div class="info-sub">@yymk1119</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- العنوان -->
+      <div class="info-card" style="cursor:default">
+        <div class="info-ic">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">العنوان</div>
+          <div class="info-sub">8090 السلمانية 178<br>حي ج7 — الطائف 26314</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- الخريطة -->
+    <div class="map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=مربط+الواصلية+الطائف+السعودية&z=15&output=embed"
+        loading="lazy"
+        allowfullscreen
+        title="موقع مربط الواصلية">
+      </iframe>
+      <a class="map-overlay-btn"
+         href="https://maps.app.goo.gl/bXPATVnaMRz3xRDd9"
+         target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        فتح في خرائط قوقل
+      </a>
+    </div>
+
+    <!-- آراء العملاء -->
+    <div class="info-head" style="margin-top:24px">آراء عملائنا</div>
+    <div class="reviews">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">مكان ممتاز والعناية بالخيل فوق الوصف، فريق محترف ومتعاون. أنصح به بشدة.</div>
+        <div class="review-author">— أبو فيصل</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">دربت فرسي على القفز معهم والنتيجة رائعة. أسعار مناسبة ومتابعة يومية.</div>
+        <div class="review-author">— م. خالد</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">إيواء نظيف ومنظّم وموقع قريب. مرتاح على خيلي عندهم.</div>
+        <div class="review-author">— سعد الحارثي</div>
+      </div>
+    </div>
+
+  </div>
+
   <p class="foot">© مربط الواصلية — جميع الحقوق محفوظة</p>
 </main>
 
+<script src="db.js"></script>
 <script>
 /* ====== STATE ====== */
 let cur=0, cat=null;
 let accPM=0, accName='', dur=1;
+let payment='cash';
 const pkgs={};
 const qtys={qj:0,qr:0};
 const qtyPrices={qj:150,qr:100};
 let saved=null;
+
+/* ====== طريقة الدفع ====== */
+function pickPay(p){
+  payment=p;
+  el('pay-cash').classList.toggle('sel',p==='cash');
+  el('pay-transfer').classList.toggle('sel',p==='transfer');
+  el('pay-cash').querySelector('input').checked=p==='cash';
+  el('pay-transfer').querySelector('input').checked=p==='transfer';
+  el('bankBox').style.display=p==='transfer'?'block':'none';
+}
 
 /* ====== NAVIGATION ====== */
 function go(n){
@@ -639,7 +833,13 @@ function step1(){
   const phoneOk=/^05\d{8}$/.test(phone);
   setErr('f-phone',!phoneOk); ok&&=phoneOk;
   setErr('f-arrive',!arrive); ok&&=!!arrive;
-  if(ok) go(3);
+  // التدريب لا يحتاج بيانات الخيل → انتقل مباشرة لتفاصيل الخدمة
+  if(ok){ if(cat==='train') go(4); else go(3); }
+}
+
+/* ====== الرجوع من تفاصيل الخدمة ====== */
+function backFromDetails(){
+  if(cat==='train') go(2); else go(3);
 }
 
 /* ====== STEP 2 VALIDATION (horse info) ====== */
@@ -662,7 +862,15 @@ function pickCat(c){
   cat=c;
   el('grp-acc').style.display=c==='acc'?'block':'none';
   el('grp-train').style.display=c==='train'?'block':'none';
-  el('svcTitle').textContent=c==='acc'?'خدمات الإيواء':'خدمات التدريب';
+  el('svcTitle').textContent=c==='acc'?'تفاصيل الإيواء':'تفاصيل التدريب';
+  // ترقيم الخطوات حسب الخدمة (تدريب = 3 خطوات، إيواء = 4)
+  if(c==='train'){
+    el('eyePersonal').textContent='الخطوة 2 من 3';
+    el('eyeDetails').textContent='الخطوة 3 من 3';
+  }else{
+    el('eyePersonal').textContent='الخطوة 2 من 4';
+    el('eyeDetails').textContent='الخطوة 4 من 4';
+  }
   // reset
   accPM=0; accName=''; dur=1;
   el('durVal').textContent='1';
@@ -752,6 +960,7 @@ function submit(){
 
   const now=new Date();
   const ref='WSL-'+now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+'-'+Math.floor(1000+Math.random()*9000);
+  const isAcc=cat==='acc';
   const cnt=v('hcount');
 
   saved={
@@ -759,13 +968,14 @@ function submit(){
     name:    v('name'),
     phone:   v('phone'),
     arrive:  v('arrive'),
-    category:cat==='acc'?'إيواء':'تدريب',
-    horseName:  v('hname'),
-    horseGender:v('hgender'),
-    horseAge:   v('hage'),
-    horseBreed: v('hbreed'),
-    horseCount: cnt,
-    duration:   cat==='acc'?dur+'شهر':'—',
+    category: isAcc?'إيواء':'تدريب',
+    horseName:  isAcc?v('hname'):'',
+    horseGender:isAcc?v('hgender'):'',
+    horseAge:   isAcc?v('hage'):'',
+    horseBreed: isAcc?v('hbreed'):'',
+    horseCount: isAcc?cnt:'',
+    duration:   isAcc?dur+'شهر':'—',
+    payment: payment==='transfer'?'تحويل بنكي':'عند الوصول',
     notes:   v('notes'),
     items:   lines.join(' + '),
     total,
@@ -773,9 +983,8 @@ function submit(){
     createdAt: now.toISOString()
   };
 
-  const all=JSON.parse(localStorage.getItem('wsl_bookings')||'[]');
-  all.push(saved);
-  localStorage.setItem('wsl_bookings',JSON.stringify(all));
+  // حفظ محلي + سحابي (إن كان مُعدّاً)
+  WSL.save(saved);
 
   const fd=saved.arrive?saved.arrive.split('-').reverse().join('/'):'—';
   el('refTag').textContent='رقم الطلب: '+ref;
@@ -783,13 +992,17 @@ function submit(){
     rr('الاسم',saved.name)+
     rr('الجوال',saved.phone)+
     rr('تاريخ الوصول',fd)+
-    rr('الخيل',saved.horseName+' — '+saved.horseGender+' — '+saved.horseAge+' سنوات'+(+cnt>1?' ('+cnt+' خيول)':''))+
+    (saved.horseName?rr('الخيل',saved.horseName+' — '+saved.horseGender+' — '+saved.horseAge+' سنوات'+(+cnt>1?' ('+cnt+' خيول)':'')):'')+
     (saved.horseBreed?rr('السلالة',saved.horseBreed):'')+
     rr('الخدمة',saved.category)+
     (saved.duration!=='—'?rr('المدة',saved.duration):'')+
     rr('التفاصيل',saved.items)+
+    rr('طريقة الدفع',saved.payment)+
     (saved.notes?rr('ملاحظات',saved.notes):'')+
     rr('الإجمالي',saved.total.toLocaleString('en-US')+' ريال');
+
+  // إشعار واتساب تلقائي للمربط ضمن نقرة المستخدم
+  shareWA();
   go(5);
 }
 function rr(a,b){ return '<div class="row"><span>'+a+'</span><span>'+esc(b)+'</span></div>'; }
@@ -805,13 +1018,14 @@ function shareWA(){
     '👤 '+saved.name,
     '📱 '+saved.phone,
     '📅 الوصول: '+fd,
-    '━━━━━━━━━━━━━━',
-    '🐴 '+saved.horseName+' ('+saved.horseGender+' — '+saved.horseAge+' سنوات)',
+    (saved.horseName?'━━━━━━━━━━━━━━':''),
+    (saved.horseName?'🐴 '+saved.horseName+' ('+saved.horseGender+' — '+saved.horseAge+' سنوات)':''),
     (saved.horseBreed?'🔖 '+saved.horseBreed:''),
-    '🔢 العدد: '+saved.horseCount,
+    (saved.horseCount?'🔢 العدد: '+saved.horseCount:''),
     '━━━━━━━━━━━━━━',
     '📦 '+saved.category+(saved.duration!=='—'?' — '+saved.duration:''),
     '📝 '+saved.items,
+    '💳 الدفع: '+saved.payment,
     (saved.notes?'💬 '+saved.notes:''),
     '━━━━━━━━━━━━━━',
     '💰 الإجمالي: '+saved.total.toLocaleString('en-US')+' ريال'
@@ -825,6 +1039,7 @@ function reset(){
   ['hgender','hcount'].forEach(id=>el(id).value='');
   el('termsChk').checked=false;
   el('termsBox').classList.remove('err');
+  pickPay('cash');
   cat=null; accPM=0; accName=''; dur=1; saved=null;
   for(const k in pkgs) delete pkgs[k];
   qtys.qj=0; qtys.qr=0;
