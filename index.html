@@ -364,14 +364,46 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
         <p class="lead">
           يسعدنا استقبال طلبك لحجز خدمات الإيواء أو التدريب. نوفّر بيئة آمنة ومجهّزة وفريقًا متمرّسًا يعتني بخيلك كما تحب.
           <br><br>
-          أربع خطوات بسيطة: بياناتك ← بيانات الخيل ← اختيار الخدمة ← التأكيد.
+          أربع خطوات بسيطة: اختيار الخدمة ← بياناتك ← بيانات الخيل ← التأكيد.
         </p>
         <div class="nav"><button class="btn btn-navy" onclick="go(1)">ابدأ الحجز ←</button></div>
       </section>
 
-      <!-- PANEL 1 · بيانات صاحب الخيل -->
+      <!-- PANEL 1 · اختيار نوع الخدمة (أولاً) -->
       <section class="panel" data-p="1">
         <div class="eye">الخطوة 1 من 4</div>
+        <h2>ماذا تريد أن تحجز؟</h2>
+        <p class="lead" style="font-size:.92rem;margin-bottom:16px">اختر نوع الخدمة للمتابعة.</p>
+        <div class="cat-grid">
+          <div class="cat" onclick="pickCat('acc')">
+            <div class="cat-ic">
+              <svg viewBox="0 0 24 24"><path d="M12 3 2 9v2h2v9h6v-6h4v6h6v-9h2V9z"/></svg>
+            </div>
+            <div>
+              <div class="cat-title">حجز إيواء</div>
+              <div class="cat-desc">إقامة شهرية مع العناية اليومية والإشراف</div>
+            </div>
+            <div class="cat-arr">‹</div>
+          </div>
+          <div class="cat" onclick="pickCat('train')">
+            <div class="cat-ic">
+              <svg viewBox="0 0 24 24"><path d="M13 2 4.5 12.5h5L8 22l9.5-12h-5Z"/></svg>
+            </div>
+            <div>
+              <div class="cat-title">حجز تدريب</div>
+              <div class="cat-desc">باقات قفز وأرضي وركوب حر وحصص فردية</div>
+            </div>
+            <div class="cat-arr">‹</div>
+          </div>
+        </div>
+        <div class="nav">
+          <button class="btn btn-outline" onclick="go(0)">رجوع</button>
+        </div>
+      </section>
+
+      <!-- PANEL 2 · بيانات صاحب الخيل -->
+      <section class="panel" data-p="2">
+        <div class="eye">الخطوة 2 من 4</div>
         <h2>بياناتك الشخصية</h2>
         <div class="field" id="f-name">
           <label>الاسم الثلاثي</label>
@@ -389,14 +421,14 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
           <div class="hint">يُرجى تحديد تاريخ الوصول</div>
         </div>
         <div class="nav">
-          <button class="btn btn-outline" onclick="go(0)">رجوع</button>
+          <button class="btn btn-outline" onclick="go(1)">رجوع</button>
           <button class="btn btn-navy" onclick="step1()">التالي ←</button>
         </div>
       </section>
 
-      <!-- PANEL 2 · بيانات الخيل -->
-      <section class="panel" data-p="2">
-        <div class="eye">الخطوة 2 من 4</div>
+      <!-- PANEL 3 · بيانات الخيل -->
+      <section class="panel" data-p="3">
+        <div class="eye">الخطوة 3 من 4</div>
         <h2>بيانات الخيل</h2>
         <div class="field" id="f-hname">
           <label>اسم الخيل</label>
@@ -410,7 +442,6 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
               <option value="">— اختر —</option>
               <option>حصان (ذكر)</option>
               <option>فرس (أنثى)</option>
-              <option>جحش</option>
               <option>خصي</option>
             </select>
             <div class="hint">يُرجى اختيار الجنس</div>
@@ -438,40 +469,8 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
           <div class="hint">يُرجى اختيار العدد</div>
         </div>
         <div class="nav">
-          <button class="btn btn-outline" onclick="go(1)">رجوع</button>
-          <button class="btn btn-navy" onclick="step2()">التالي ←</button>
-        </div>
-      </section>
-
-      <!-- PANEL 3 · نوع الخدمة -->
-      <section class="panel" data-p="3">
-        <div class="eye">الخطوة 3 من 4</div>
-        <h2>اختر نوع الخدمة</h2>
-        <p class="lead" style="font-size:.92rem;margin-bottom:16px">يمكنك اختيار خدمة واحدة في كل طلب.</p>
-        <div class="cat-grid">
-          <div class="cat" onclick="pickCat('acc')">
-            <div class="cat-ic">
-              <svg viewBox="0 0 24 24"><path d="M12 3 2 9v2h2v9h6v-6h4v6h6v-9h2V9z"/></svg>
-            </div>
-            <div>
-              <div class="cat-title">خدمات الإيواء</div>
-              <div class="cat-desc">إقامة شهرية مع العناية اليومية والإشراف</div>
-            </div>
-            <div class="cat-arr">‹</div>
-          </div>
-          <div class="cat" onclick="pickCat('train')">
-            <div class="cat-ic">
-              <svg viewBox="0 0 24 24"><path d="M13 2 4.5 12.5h5L8 22l9.5-12h-5Z"/></svg>
-            </div>
-            <div>
-              <div class="cat-title">خدمات التدريب</div>
-              <div class="cat-desc">باقات قفز وأرضي وركوب حر وحصص فردية</div>
-            </div>
-            <div class="cat-arr">‹</div>
-          </div>
-        </div>
-        <div class="nav">
           <button class="btn btn-outline" onclick="go(2)">رجوع</button>
+          <button class="btn btn-navy" onclick="step2()">التالي ←</button>
         </div>
       </section>
 
@@ -640,10 +639,10 @@ function step1(){
   const phoneOk=/^05\d{8}$/.test(phone);
   setErr('f-phone',!phoneOk); ok&&=phoneOk;
   setErr('f-arrive',!arrive); ok&&=!!arrive;
-  if(ok) go(2);
+  if(ok) go(3);
 }
 
-/* ====== STEP 2 VALIDATION ====== */
+/* ====== STEP 2 VALIDATION (horse info) ====== */
 function step2(){
   let ok=true;
   const hnameOk=v('hname').length>=2;
@@ -655,7 +654,7 @@ function step2(){
   setErr('f-hage',!hageOk); ok&&=hageOk;
   const hcountOk=!!v('hcount');
   setErr('f-hcount',!hcountOk); ok&&=hcountOk;
-  if(ok) go(3);
+  if(ok) go(4);
 }
 
 /* ====== PICK CATEGORY ====== */
@@ -675,7 +674,7 @@ function pickCat(c){
     o.classList.remove('sel');
     o.querySelector('input').checked=false;
   });
-  calc(); go(4);
+  calc(); go(2);
 }
 
 /* ====== ACCOMMODATION SELECT ====== */
@@ -817,7 +816,7 @@ function shareWA(){
     '━━━━━━━━━━━━━━',
     '💰 الإجمالي: '+saved.total.toLocaleString('en-US')+' ريال'
   ].filter(Boolean).join('\n');
-  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+  window.open('https://wa.me/966540351119?text='+encodeURIComponent(msg),'_blank');
 }
 
 /* ====== RESET ====== */
