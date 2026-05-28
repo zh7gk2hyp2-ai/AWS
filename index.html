@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرْبط الواصلية - منصة الحجوزات</title>
+    <style>
+        :root {
+            --primary-color: #d4af37; /* ذهبي */
+            --secondary-color: #1a1a1a; /* أسود داكن */
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: #fff;
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .booking-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            font-size: 1.5rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"], select, input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .radio-group, .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 600px) {
+            .radio-group {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-card {
+            border: 2px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            background-color: #fffdf5;
+        }
+
+        .option-card input {
+            margin-left: 12px;
+            transform: scale(1.2);
+        }
+
+        .option-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .option-price {
+            color: #b8860b;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .total-box {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+
+        .total-box span {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        button.submit-btn {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        button.submit-btn:hover {
+            background-color: #c5a028;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>
