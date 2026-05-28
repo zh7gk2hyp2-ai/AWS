@@ -3,72 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مرْبط الواصلية</title>
+    <title>مربط الواصلية - منصة الحجوزات المطورة</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; margin: 0; padding: 0; text-align: center; }
-        .header { background-color: #1a1a1a; color: #d4af37; padding: 20px; border-bottom: 5px solid #d4af37; }
-        .card { background: #ffffff; max-width: 500px; margin: 20px auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: right; }
-        .box { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; border-radius: 5px; }
-        label { display: block; margin: 10px 0; font-size: 1.1rem; cursor: pointer; }
-        input[type="number"] { width: 70px; padding: 5px; }
-        .total { background: #1a1a1a; color: #fff; padding: 15px; text-align: center; font-size: 1.4rem; border-radius: 5px; margin-top: 15px; }
-        .total span { color: #d4af37; font-weight: bold; }
-        button { background: #d4af37; color: #1a1a1a; border: none; width: 100%; padding: 12px; font-size: 1.2rem; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 10px; }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <h1 style="margin:0;">مرْبط الواصلية</h1>
-        <p style="margin:5px 0 0 0; color:#fff;">حجوزات الإيواء والتدريب</p>
-    </div>
-
-    <div class="card">
-        <form oninput="calc()">
-            
-            <div class="box">
-                <strong style="color:#1a1a1a;">1. خدمات الإيواء (شهري):</strong>
-                <label><input type="radio" name="acc" value="1000"> إيواء شامل (1000 ريال)</label>
-                <label><input type="radio" name="acc" value="600"> إيواء سايس مع غرفة (600 ريال)</label>
-                <label><input type="radio" name="acc" value="0" checked> بدون إيواء</label>
-            </div>
-
-            <div class="box">
-                <strong style="color:#1a1a1a;">2. باقات التدريب:</strong>
-                <label><input type="checkbox" name="chk" value="1000"> تدريب قفز - 12 حصة (1000 ريال)</label>
-                <label><input type="checkbox" name="chk" value="850"> تدريب أرضي - 10 حصص (850 ريال)</label>
-                <label><input type="checkbox" name="chk" value="500"> ركوب حر - 5 حصص (500 ريال)</label>
-            </div>
-
-            <div class="box">
-                <strong style="color:#1a1a1a;">3. الحصص الفردية:</strong>
-                <label>حصص قفز (150 ريال): <input type="number" id="j" min="0" value="0"></label>
-                <label>ركوب حر (100 ريال): <input type="number" id="f" min="0" value="0"></label>
-            </div>
-
-            <div class="total">
-                الإجمالي: <span id="t">0</span> ريال
-            </div>
-
-            <button type="button" onclick="alert('تم إرسال طلب الحجز بنجاح!')">تأكيد الحجز</button>
-        </form>
-    </div>
-
-    <script>
-        function calc() {
-            let total = 0;
-            let acc = document.querySelector('input[name="acc"]:checked');
-            if(acc) total += parseInt(acc.value);
-            
-            let chks = document.querySelectorAll('input[name="chk"]:checked');
-            chks.forEach(c => total += parseInt(c.value));
-            
-            let j = parseInt(document.getElementById('j').value) || 0;
-            let f = parseInt(document.getElementById('f').value) || 0;
-            total += (j * 150) + (f * 100);
-            
-            document.getElementById('t').innerText = total;
+        :root {
+            --primary: #d4af37; /* الذهبي */
+            --dark: #1a1a1a;    /* الأسود */
+            --bg: #f8f9fa;
+            --card: #ffffff;
         }
-    </script>
-</body>
-</html>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--dark);
+            color: var(--primary);
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid var(--primary);
+        }
+
+        header h1 { margin: 0; font-size: 2.2rem; }
+        header p { color: #fff; margin: 8px 0 0 0; font-size: 1.1rem; }
+
+        .container {
+            max-width: 600px;
+            margin: 25px auto;
+            padding: 10px;
+        }
+
+        .welcome-box {
+            background: var(--dark);
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .booking-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        input[type="text"], input[type="tel"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eaeaea;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* تصميم علامات التبويب Tabs */
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: #eee;
+            color: var(--dark);
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .option-label {
+            display: block;
+            background: #fafafa;
+            border: 2px solid #eaeaea;
+            padding: 14px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: all 0.2s;
+            text-align: right;
+        }
+
+        .option-label:hover {
+            border-color: var(--primary);
+            background: #fffdf6;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-left: 10px;
+            transform: scale(1.2);
+            vertical-align: middle;
+        }
+
+        .total-box {
+            background-color: var(--dark);
+            color: #fff;
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1.3rem;
+        }
+
+        .total-box span {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.7rem;
+        }
+
+        button.btn-submit {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* لوحة تحكم الإدارة السرية */
+        .admin-section {
+            margin-top: 50px;
+            border-top: 2px dashed #ccc;
+            padding-top: 20px;
+        }
+
+        .admin-btn {
+            background: #666;
+            color: #fff;
+            border: none;
