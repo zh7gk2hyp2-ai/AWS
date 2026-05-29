@@ -9,7 +9,8 @@
        3. الصق رابط قاعدة البيانات أدناه.
    ============================================================ */
 
-const FIREBASE_URL = ''; // مثال: https://my-stable-rtdb.firebaseio.com
+const FIREBASE_URL    = 'https://wasilia-stable-default-rtdb.firebaseio.com';
+const FIREBASE_SECRET = ' 07CuaraH3IRXHyyhGxv7wEe0NgbUdeW39hrhXUiF ';
 
 const STORE_KEY = 'wsl_bookings';
 
