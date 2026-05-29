@@ -1,79 +1,87 @@
 /* ============================================================
-   قاعدة بيانات مربط الواصلية
+   قاعدة بيانات مربط الواصلية — Firebase Realtime Database
    ------------------------------------------------------------
-   • تعمل افتراضياً بالتخزين المحلي (هذا الجهاز فقط).
-   • لمزامنة الحجوزات بين جميع الأجهزة (جوال المالك، السكرتير...):
-       1. افتح ملف "دليل-الإعداد.md" واتبع الخطوات.
-       2. الصق رابط Google Apps Script في المتغيّر CLOUD_URL أدناه.
+   • مجاني 100% (Spark Plan — لا بطاقة بنكية).
+   • يعمل افتراضياً بالتخزين المحلي على الجهاز.
+   • لمزامنة الحجوزات بين جميع الأجهزة:
+       1. اتبع خطوتين في ملف "دليل-الإعداد.md".
+       2. الصق رابط قاعدة البيانات والسر أدناه.
    ============================================================ */
 
-const CLOUD_URL = ''; // ← الصق الرابط هنا، مثال: https://script.google.com/macros/s/XXXXX/exec
+const FIREBASE_URL    = ''; // مثال: https://my-stable-rtdb.firebaseio.com
+const FIREBASE_SECRET = ''; // سر قاعدة البيانات (من الإعدادات)
 
 const STORE_KEY = 'wsl_bookings';
 
 const WSL = {
-  _local(){ return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); },
-  _setLocal(arr){ localStorage.setItem(STORE_KEY, JSON.stringify(arr)); },
 
-  /* قراءة كل الحجوزات (يدمج المحلي مع السحابي حسب رقم الطلب) */
+  /* ---- قراءة البيانات ---- */
   async getAll(){
     const local = this._local();
-    if(!CLOUD_URL) return local;
+    if(!FIREBASE_URL) return local;
     try{
-      const res = await fetch(CLOUD_URL + '?action=list', { method:'GET' });
-      const cloud = await res.json();
-      const map = {};
+      const res  = await fetch(`${FIREBASE_URL}/bookings.json?auth=${FIREBASE_SECRET}`);
+      const data = await res.json();
+      if(!data || typeof data !== 'object') return local;
+
+      const cloud = Object.entries(data).map(([fbKey, b]) => ({...b, _fbKey: fbKey}));
+      const map   = {};
       [...local, ...cloud].forEach(b => { if(b && b.ref) map[b.ref] = b; });
       const merged = Object.values(map);
       this._setLocal(merged);
       return merged;
     }catch(e){
-      console.warn('تعذّر القراءة من السحابة، عرض البيانات المحلية:', e);
+      console.warn('Firebase: تعذّرت القراءة، عرض البيانات المحلية', e);
       return local;
     }
   },
 
-  /* حفظ حجز جديد */
+  /* ---- حفظ حجز جديد ---- */
   async save(booking){
     const arr = this._local();
     arr.push(booking);
     this._setLocal(arr);
-    if(CLOUD_URL){
-      try{
-        await fetch(CLOUD_URL, {
-          method:'POST', mode:'no-cors',
-          headers:{ 'Content-Type':'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action:'add', booking })
-        });
-      }catch(e){ console.warn('تعذّر الحفظ في السحابة (حُفظ محلياً):', e); }
-    }
+    if(!FIREBASE_URL) return;
+    try{
+      const res  = await fetch(`${FIREBASE_URL}/bookings.json?auth=${FIREBASE_SECRET}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(booking)
+      });
+      const {name: fbKey} = await res.json();
+      // احفظ مفتاح Firebase محلياً للتحديث والحذف لاحقاً
+      this._setLocal(this._local().map(b => b.ref === booking.ref ? {...b, _fbKey: fbKey} : b));
+    }catch(e){ console.warn('Firebase: تعذّر الحفظ (حُفظ محلياً)', e); }
   },
 
-  /* تغيير حالة حجز */
+  /* ---- تغيير حالة حجز ---- */
   async setStatus(ref, status){
-    this._setLocal(this._local().map(b => b.ref===ref ? {...b, status} : b));
-    if(CLOUD_URL){
-      try{
-        await fetch(CLOUD_URL, {
-          method:'POST', mode:'no-cors',
-          headers:{ 'Content-Type':'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action:'status', ref, status })
-        });
-      }catch(e){ console.warn('تعذّر تحديث الحالة في السحابة:', e); }
-    }
+    const arr     = this._local();
+    const booking = arr.find(b => b.ref === ref);
+    this._setLocal(arr.map(b => b.ref === ref ? {...b, status} : b));
+    if(!FIREBASE_URL || !booking?._fbKey) return;
+    try{
+      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json?auth=${FIREBASE_SECRET}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({status})
+      });
+    }catch(e){ console.warn('Firebase: تعذّر تحديث الحالة', e); }
   },
 
-  /* حذف حجز */
+  /* ---- حذف حجز ---- */
   async remove(ref){
-    this._setLocal(this._local().filter(b => b.ref!==ref));
-    if(CLOUD_URL){
-      try{
-        await fetch(CLOUD_URL, {
-          method:'POST', mode:'no-cors',
-          headers:{ 'Content-Type':'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action:'delete', ref })
-        });
-      }catch(e){ console.warn('تعذّر الحذف من السحابة:', e); }
-    }
-  }
+    const arr     = this._local();
+    const booking = arr.find(b => b.ref === ref);
+    this._setLocal(arr.filter(b => b.ref !== ref));
+    if(!FIREBASE_URL || !booking?._fbKey) return;
+    try{
+      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json?auth=${FIREBASE_SECRET}`, {
+        method: 'DELETE'
+      });
+    }catch(e){ console.warn('Firebase: تعذّر الحذف', e); }
+  },
+
+  _local(){ return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); },
+  _setLocal(arr){ localStorage.setItem(STORE_KEY, JSON.stringify(arr)); }
 };
