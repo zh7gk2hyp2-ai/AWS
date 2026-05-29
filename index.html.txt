@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مربط الواصلية | حجز الخدمات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:      #1a2d70;
+  --navy-deep: #0c1840;
+  --navy-mid:  #2448b0;
+  --navy-lite: #3a5cc8;
+  --navy-pale: #dde5f8;
+  --navy-bg:   #f0f3fc;
+  --white:     #ffffff;
+  --border:    #bfcce8;
+  --text:      #0c1840;
+  --text-sub:  #4a5c90;
+  --text-mute: #8898c5;
+  --green:     #16a34a;
+  --red:       #dc2626;
+  --shadow:    0 12px 48px rgba(12,24,64,.12);
+  --shadow-sm: 0 4px 16px rgba(12,24,64,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:var(--navy-bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* ====== HEADER ====== */
+.header{
+  background:var(--navy-deep);
+  padding:28px 20px 36px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% -20%, rgba(52,92,200,.4) 0%, transparent 70%);
+  pointer-events:none;
+}
+.logo-wrap{
+  width:88px;height:88px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  box-shadow:0 0 0 8px rgba(255,255,255,.04);
+}
+.logo-wrap svg{width:62px;height:56px;color:#fff}
+.brand{font-family:'Amiri',serif;color:#fff;font-size:2rem;font-weight:700;letter-spacing:.5px}
+.brand-sub{color:rgba(255,255,255,.6);font-size:.92rem;margin-top:5px;font-weight:400}
+
+/* ====== STEPS ====== */
+.steps-bar{
+  max-width:520px;margin:20px auto 0;
+  display:flex;gap:7px;padding:0 20px;
+}
+.step-dot{
+  flex:1;height:4px;border-radius:9px;
+  background:rgba(255,255,255,.2);
+  transition:background .3s;
+}
+.step-dot.on{background:#fff}
+
+/* ====== MAIN ====== */
+.main{max-width:540px;margin:22px auto 70px;padding:0 16px}
+.card{
+  background:var(--white);border-radius:20px;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+  overflow:hidden;
+}
+.card-body{padding:28px 24px}
+
+.panel{display:none;animation:fadeUp .4s ease}
+.panel.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ====== TYPOGRAPHY ====== */
+.eye{color:var(--navy-mid);font-weight:700;font-size:.78rem;letter-spacing:1.2px;text-transform:uppercase}
+h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px 0 8px}
+.lead{color:var(--text-sub);line-height:1.9;font-size:1rem}
+
+/* ====== FIELDS ====== */
+.field{margin:15px 0}
+.field label{display:block;font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:7px}
+.field label .opt{font-weight:400;color:var(--text-mute);font-size:.82rem}
+.field input,
+.field select,
+.field textarea{
+  width:100%;padding:13px 15px;
+  border:1.5px solid var(--border);border-radius:12px;
+  font-family:'Tajawal',sans-serif;font-size:.98rem;
+  background:#fafbff;color:var(--text);
+  transition:border-color .2s,box-shadow .2s;
+}
+.field select{
+  cursor:pointer;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%231a2d70' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:left 14px center;
+  padding-left:38px;
+}
+.field textarea{resize:vertical;min-height:88px;line-height:1.75}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  outline:none;border-color:var(--navy-mid);
+  box-shadow:0 0 0 4px rgba(36,72,176,.12);
+}
+.field .hint{color:var(--red);font-size:.8rem;margin-top:5px;display:none}
+.field.err input,
+.field.err select,
+.field.err textarea{border-color:#fca5a5;background:#fff8f8}
+.field.err .hint{display:block}
+
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:380px){.row2{grid-template-columns:1fr}}
+
+/* ====== CATEGORY CARDS ====== */
+.cat-grid{display:grid;gap:14px;margin-top:6px}
+.cat{
+  border:2px solid var(--border);border-radius:16px;
+  padding:20px 18px;cursor:pointer;background:#fafbff;
+  display:flex;gap:16px;align-items:center;
+  transition:border-color .2s,box-shadow .2s,transform .12s;
+}
+.cat:active{transform:scale(.99)}
+.cat:hover{border-color:var(--navy-mid);box-shadow:0 8px 24px rgba(36,72,176,.12)}
+.cat-ic{
+  width:52px;height:52px;border-radius:14px;flex:none;
+  background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;
+}
+.cat-ic svg{width:28px;height:28px;fill:#fff}
+.cat-title{font-weight:800;font-size:1.1rem;color:var(--navy-deep)}
+.cat-desc{color:var(--text-sub);font-size:.86rem;margin-top:3px}
+.cat-arr{margin-right:auto;color:var(--navy-mid);font-size:1.6rem;font-weight:300}
+
+/* ====== OPTION ROWS ====== */
+.opt{
+  display:flex;align-items:center;gap:13px;
+  border:1.5px solid var(--border);border-radius:13px;
+  padding:14px 15px;margin-bottom:10px;
+  cursor:pointer;background:#fafbff;
+  transition:border-color .2s,background .2s;
+}
+.opt:hover{border-color:var(--navy-pale)}
+.opt.sel{border-color:var(--navy-mid);background:#f0f4ff}
+.opt input[type=radio],
+.opt input[type=checkbox]{
+  width:20px;height:20px;flex:none;
+  accent-color:var(--navy-mid);cursor:pointer;
+}
+.opt-info{flex:1}
+.opt-name{font-weight:700;color:var(--text);font-size:.98rem}
+.opt-meta{font-size:.82rem;color:var(--text-mute);margin-top:2px}
+.opt-price{font-weight:800;color:var(--navy-mid);white-space:nowrap;font-size:.95rem}
+
+/* ====== QUANTITY ROWS ====== */
+.qty{
+  display:flex;align-items:center;justify-content:space-between;
+  border:1.5px solid var(--border);border-radius:13px;
+  padding:12px 15px;margin-bottom:10px;background:#fafbff;
+}
+.qty-name{font-weight:700;font-size:.96rem}
+.qty-meta{font-size:.8rem;color:var(--text-mute)}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{
+  width:34px;height:34px;border-radius:9px;border:none;
+  background:var(--navy-deep);color:#fff;
+  font-size:1.2rem;font-weight:700;cursor:pointer;
+  transition:background .15s;
+}
+.stepper button:hover{background:var(--navy-mid)}
+.stepper button:active{transform:scale(.92)}
+.stepper .val{min-width:28px;text-align:center;font-weight:800;font-size:1rem;color:var(--navy-deep)}
+
+/* ====== SECTION DIVIDER ====== */
+.sec-title{
+  font-weight:800;font-size:.95rem;color:var(--navy-deep);
+  margin:18px 0 10px;display:flex;align-items:center;gap:8px;
+}
+.sec-title::before{
+  content:'';width:4px;height:17px;
+  background:var(--navy-mid);border-radius:2px;
+}
+
+/* ====== DURATION BOX ====== */
+.dur-box{
+  background:var(--navy-bg);border:1.5px solid var(--navy-pale);
+  border-radius:13px;padding:16px 18px;margin:14px 0;
+}
+.dur-label{font-weight:700;font-size:.92rem;color:var(--navy-deep);margin-bottom:10px}
+.dur-ctrl{display:flex;align-items:center;gap:16px}
+.dur-note{font-size:.83rem;color:var(--text-sub);margin-top:8px}
+
+/* ====== TOTAL BAR ====== */
+.total-bar{
+  background:var(--navy-deep);border-radius:14px;
+  padding:16px 18px;display:flex;
+  justify-content:space-between;align-items:center;
+  margin-top:18px;
+}
+.total-lbl{color:rgba(255,255,255,.65);font-size:.95rem}
+.total-amt{color:#fff;font-size:1.65rem;font-weight:800}
+.total-amt small{font-size:.9rem;font-weight:400;color:rgba(255,255,255,.55);margin-right:4px}
+
+/* ====== TERMS ====== */
+.terms{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:12px;
+  padding:14px 15px;margin-top:16px;background:#fafbff;
+  cursor:pointer;
+}
+.terms input[type=checkbox]{
+  width:20px;height:20px;flex:none;
+  accent-color:var(--navy-mid);margin-top:2px;cursor:pointer;
+}
+.terms-txt{font-size:.88rem;color:var(--text-sub);line-height:1.75}
+.terms.err{border-color:#fca5a5;background:#fff8f8}
+
+/* ====== BUTTONS ====== */
+.nav{display:flex;gap:10px;margin-top:22px}
+.btn{
+  flex:1;padding:14px;border:none;border-radius:13px;
+  font-family:'Tajawal',sans-serif;font-size:1rem;
+  font-weight:800;cursor:pointer;
+  transition:transform .12s,opacity .2s,box-shadow .2s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-navy{
+  background:var(--navy-deep);color:#fff;
+  box-shadow:0 4px 16px rgba(12,24,64,.25);
+}
+.btn-navy:hover{background:var(--navy-mid)}
+.btn-outline{
+  background:#fff;color:var(--navy-deep);
+  border:1.5px solid var(--border);
+  flex:0 0 38%;
+}
+.btn-outline:hover{border-color:var(--navy-mid);color:var(--navy-mid)}
+.btn-wa{
+  background:#25d366;color:#fff;
+  box-shadow:0 4px 16px rgba(37,211,102,.25);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-wa:hover{background:#1da851}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* ====== SUCCESS SCREEN ====== */
+.done{text-align:center;padding:10px 4px}
+.seal{
+  width:82px;height:82px;margin:4px auto 16px;
+  border-radius:50%;background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 10px rgba(26,45,112,.1);
+  animation:pop .5s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.seal svg{width:40px;height:40px;fill:#fff}
+.ref-tag{
+  display:inline-block;border:1.5px dashed var(--navy-mid);
+  border-radius:10px;padding:8px 18px;margin:12px 0;
+  font-weight:800;color:var(--navy-mid);letter-spacing:1px;font-size:.95rem;
+  background:var(--navy-bg);
+}
+.receipt{
+  text-align:right;background:#fafbff;border:1px solid var(--border);
+  border-radius:13px;padding:14px 16px;margin-top:16px;
+}
+.receipt .row{
+  display:flex;justify-content:space-between;
+  padding:7px 0;border-bottom:1px dotted var(--border);font-size:.9rem;
+}
+.receipt .row:last-child{border:none}
+.receipt .row span:first-child{color:var(--text-mute)}
+.receipt .row span:last-child{font-weight:700;color:var(--text)}
+
+.wa-panel{
+  margin-top:18px;background:var(--navy-bg);
+  border:1.5px solid var(--navy-pale);border-radius:14px;
+  padding:16px 18px;text-align:center;
+}
+.wa-panel p{font-size:.88rem;color:var(--text-sub);margin-bottom:12px}
+
+.foot{
+  text-align:center;color:var(--text-mute);
+  font-size:.8rem;padding:0 16px 32px;margin-top:18px;
+}
+
+/* ====== INFO SECTION ====== */
+.info-section{margin-top:20px}
+.info-head{
+  font-family:'Amiri',serif;color:var(--navy-deep);
+  font-size:1.25rem;font-weight:700;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.info-head::before{
+  content:'';display:block;width:4px;height:20px;
+  background:var(--navy-mid);border-radius:2px;
+}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:380px){.info-grid{grid-template-columns:1fr}}
+.info-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:16px 14px;
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--text);
+  transition:border-color .2s,box-shadow .2s,transform .12s;
+  box-shadow:0 2px 12px rgba(12,24,64,.06);
+}
+.info-card:hover{
+  border-color:var(--navy-mid);
+  box-shadow:0 6px 20px rgba(36,72,176,.12);
+  transform:translateY(-1px);
+}
+.info-ic{
+  width:46px;height:46px;border-radius:13px;flex:none;
+  background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;
+}
+.info-ic svg{width:24px;height:24px;fill:#fff}
+.info-ic.tt{background:#000}
+.info-ic.wa{background:#25d366}
+.info-label{font-weight:800;font-size:.92rem;color:var(--navy-deep)}
+.info-sub{font-size:.8rem;color:var(--text-mute);margin-top:2px}
+.info-arrow{margin-right:auto;color:var(--navy-mid);font-size:1.3rem}
+
+.map-wrap{
+  border-radius:16px;overflow:hidden;
+  border:1.5px solid var(--border);
+  box-shadow:0 4px 16px rgba(12,24,64,.08);
+  position:relative;
+}
+.map-wrap iframe{display:block;width:100%;height:220px;border:none}
+.map-overlay-btn{
+  position:absolute;bottom:10px;left:10px;
+  background:var(--navy-deep);color:#fff;
+  border:none;border-radius:10px;padding:8px 14px;
+  font-family:inherit;font-size:.82rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;gap:6px;
+  box-shadow:0 4px 12px rgba(12,24,64,.3);
+  text-decoration:none;
+}
+.map-overlay-btn:hover{background:var(--navy-mid)}
+
+/* ====== WHY-US FEATURES ====== */
+.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 6px}
+@media(max-width:380px){.features{grid-template-columns:1fr}}
+.feature{
+  display:flex;align-items:center;gap:10px;
+  background:var(--navy-bg);border:1px solid var(--navy-pale);
+  border-radius:12px;padding:11px 12px;
+}
+.feature-ic{
+  width:34px;height:34px;border-radius:9px;flex:none;
+  background:var(--navy-deep);display:flex;align-items:center;justify-content:center;
+}
+.feature-ic svg{width:18px;height:18px;fill:#fff}
+.feature-txt{font-size:.85rem;font-weight:700;color:var(--navy-deep);line-height:1.4}
+
+/* ====== TESTIMONIALS ====== */
+.reviews{display:grid;gap:12px;margin-bottom:8px}
+.review{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(12,24,64,.06);
+}
+.review-stars{color:#f5a623;font-size:.95rem;letter-spacing:2px;margin-bottom:6px}
+.review-text{font-size:.9rem;color:var(--text);line-height:1.8}
+.review-author{font-size:.82rem;color:var(--text-mute);margin-top:8px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<header class="header">
+  <div class="logo-wrap">
+    <img src="logo.svg" alt="شعار مربط الواصلية" style="width:66px;height:60px;filter:brightness(0) invert(1)">
+  </div>
+  <div class="brand">مربط الواصلية</div>
+  <div class="brand-sub">الإيواء والتدريب — حيث تليق بخيلك العناية</div>
+  <div class="steps-bar" id="stepsBar">
+    <div class="step-dot on"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+  </div>
+</header>
+
+<!-- ====== MAIN ====== -->
+<main class="main">
+  <div class="card">
+    <div class="card-body">
+
+      <!-- PANEL 0 · ترحيب -->
+      <section class="panel on" data-p="0">
+        <div class="eye">أهلاً بك</div>
+        <h2>مرحبًا في مربط الواصلية</h2>
+        <p class="lead">
+          يسعدنا استقبال طلبك لحجز خدمات الإيواء أو التدريب. نوفّر بيئة آمنة ومجهّزة وفريقًا متمرّسًا يعتني بخيلك كما تحب.
+        </p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div>
+            <div class="feature-txt">بيئة آمنة ومجهّزة</div>
+          </div>
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6z"/></svg></div>
+            <div class="feature-txt">فريق متمرّس</div>
+          </div>
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11h-1a1 1 0 0 1-1-1V7a1 1 0 1 1 2 0v4h1a1 1 0 1 1 0 2z"/></svg></div>
+            <div class="feature-txt">عناية يومية وإشراف</div>
+          </div>
+          <div class="feature">
+            <div class="feature-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4.5 12.5h5L8 22l9.5-12h-5z"/></svg></div>
+            <div class="feature-txt">تدريب احترافي</div>
+          </div>
+        </div>
+
+        <div class="nav"><button class="btn btn-navy" onclick="go(1)">ابدأ الحجز ←</button></div>
+      </section>
+
+      <!-- PANEL 1 · اختيار نوع الخدمة (أولاً) -->
+      <section class="panel" data-p="1">
+        <div class="eye">الخطوة الأولى</div>
+        <h2>ماذا تريد أن تحجز؟</h2>
+        <p class="lead" style="font-size:.92rem;margin-bottom:16px">اختر نوع الخدمة للمتابعة.</p>
+        <div class="cat-grid">
+          <div class="cat" onclick="pickCat('acc')">
+            <div class="cat-ic">
+              <svg viewBox="0 0 24 24"><path d="M12 3 2 9v2h2v9h6v-6h4v6h6v-9h2V9z"/></svg>
+            </div>
+            <div>
+              <div class="cat-title">حجز إيواء</div>
+              <div class="cat-desc">إقامة شهرية مع العناية اليومية والإشراف</div>
+            </div>
+            <div class="cat-arr">‹</div>
+          </div>
+          <div class="cat" onclick="pickCat('train')">
+            <div class="cat-ic">
+              <svg viewBox="0 0 24 24"><path d="M13 2 4.5 12.5h5L8 22l9.5-12h-5Z"/></svg>
+            </div>
+            <div>
+              <div class="cat-title">حجز تدريب</div>
+              <div class="cat-desc">باقات قفز وأرضي وركوب حر وحصص فردية</div>
+            </div>
+            <div class="cat-arr">‹</div>
+          </div>
+        </div>
+        <div class="nav">
+          <button class="btn btn-outline" onclick="go(0)">رجوع</button>
+        </div>
+      </section>
+
+      <!-- PANEL 2 · بيانات صاحب الخيل -->
+      <section class="panel" data-p="2">
+        <div class="eye" id="eyePersonal">الخطوة 2</div>
+        <h2>بياناتك الشخصية</h2>
+        <div class="field" id="f-name">
+          <label>الاسم الثلاثي</label>
+          <input id="name" type="text" placeholder="مثال: محمد عبدالله الواصلي" autocomplete="name">
+          <div class="hint">يُرجى إدخال الاسم الثلاثي كاملاً</div>
+        </div>
+        <div class="field" id="f-phone">
+          <label>رقم الجوال</label>
+          <input id="phone" type="tel" inputmode="numeric" placeholder="05XXXXXXXX" maxlength="10">
+          <div class="hint">رقم جوال صحيح يبدأ بـ 05 (10 أرقام)</div>
+        </div>
+        <div class="field" id="f-arrive">
+          <label>تاريخ الوصول</label>
+          <input id="arrive" type="date">
+          <div class="hint">يُرجى تحديد تاريخ الوصول</div>
+        </div>
+        <div class="nav">
+          <button class="btn btn-outline" onclick="go(1)">رجوع</button>
+          <button class="btn btn-navy" onclick="step1()">التالي ←</button>
+        </div>
+      </section>
+
+      <!-- PANEL 3 · بيانات الخيل -->
+      <section class="panel" data-p="3">
+        <div class="eye">الخطوة 3 من 4</div>
+        <h2>بيانات الخيل</h2>
+        <p class="lead" style="font-size:.88rem;margin-bottom:6px">هذه الخطوة خاصة بحجز الإيواء.</p>
+        <div class="field" id="f-hname">
+          <label>اسم الخيل</label>
+          <input id="hname" type="text" placeholder="مثال: الصواعق">
+          <div class="hint">يُرجى إدخال اسم الخيل</div>
+        </div>
+        <div class="row2">
+          <div class="field" id="f-hgender">
+            <label>جنس الخيل</label>
+            <select id="hgender">
+              <option value="">— اختر —</option>
+              <option>حصان (ذكر)</option>
+              <option>فرس (أنثى)</option>
+              <option>خصي</option>
+            </select>
+            <div class="hint">يُرجى اختيار الجنس</div>
+          </div>
+          <div class="field" id="f-hage">
+            <label>العمر (بالسنوات)</label>
+            <input id="hage" type="number" min="1" max="35" placeholder="مثال: 5">
+            <div class="hint">أدخل العمر بالسنوات</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>السلالة <span class="opt">(اختياري)</span></label>
+          <input id="hbreed" type="text" placeholder="مثال: عربي أصيل، إنجليزي...">
+        </div>
+        <div class="field" id="f-hcount">
+          <label>عدد الخيول</label>
+          <select id="hcount">
+            <option value="">— اختر —</option>
+            <option value="1">1 خيل</option>
+            <option value="2">2 خيول</option>
+            <option value="3">3 خيول</option>
+            <option value="4">4 خيول</option>
+            <option value="5">5 خيول فأكثر</option>
+          </select>
+          <div class="hint">يُرجى اختيار العدد</div>
+        </div>
+        <div class="nav">
+          <button class="btn btn-outline" onclick="go(2)">رجوع</button>
+          <button class="btn btn-navy" onclick="step2()">التالي ←</button>
+        </div>
+      </section>
+
+      <!-- PANEL 4 · تفاصيل الخدمة -->
+      <section class="panel" data-p="4">
+        <div class="eye" id="eyeDetails">الخطوة الأخيرة</div>
+        <h2 id="svcTitle">تفاصيل الخدمة</h2>
+
+        <!-- إيواء -->
+        <div id="grp-acc" style="display:none">
+          <div class="opt" onclick="pickAcc(this,1000)">
+            <input type="radio" name="acc">
+            <div class="opt-info">
+              <div class="opt-name">إيواء شامل</div>
+              <div class="opt-meta">إقامة كاملة مع العناية اليومية</div>
+            </div>
+            <div class="opt-price">1,000 ريال / شهر</div>
+          </div>
+          <div class="opt" onclick="pickAcc(this,600)">
+            <input type="radio" name="acc">
+            <div class="opt-info">
+              <div class="opt-name">إيواء سايس مع الغرفة</div>
+              <div class="opt-meta">غرفة للسايس ضمن الإقامة</div>
+            </div>
+            <div class="opt-price">600 ريال / شهر</div>
+          </div>
+
+          <!-- مدة الإقامة -->
+          <div class="dur-box" id="durBox" style="display:none">
+            <div class="dur-label">مدة الإقامة</div>
+            <div class="dur-ctrl">
+              <div class="stepper">
+                <button type="button" onclick="bumpDur(-1)">−</button>
+                <span class="val" id="durVal">1</span>
+                <button type="button" onclick="bumpDur(1)">+</button>
+              </div>
+              <span style="font-weight:700;color:var(--navy-deep)">شهر</span>
+            </div>
+            <div class="dur-note" id="durNote"></div>
+          </div>
+        </div>
+
+        <!-- تدريب -->
+        <div id="grp-train" style="display:none">
+          <div class="sec-title">الباقات</div>
+          <div class="opt" onclick="togglePkg(this,'jump',1000)">
+            <input type="checkbox">
+            <div class="opt-info">
+              <div class="opt-name">تدريب قفز</div>
+              <div class="opt-meta">12 حصة</div>
+            </div>
+            <div class="opt-price">1,000 ريال</div>
+          </div>
+          <div class="opt" onclick="togglePkg(this,'ground',850)">
+            <input type="checkbox">
+            <div class="opt-info">
+              <div class="opt-name">تدريب أرضي</div>
+              <div class="opt-meta">10 حصص</div>
+            </div>
+            <div class="opt-price">850 ريال</div>
+          </div>
+          <div class="opt" onclick="togglePkg(this,'ride',500)">
+            <input type="checkbox">
+            <div class="opt-info">
+              <div class="opt-name">ركوب حر</div>
+              <div class="opt-meta">5 حصص</div>
+            </div>
+            <div class="opt-price">500 ريال</div>
+          </div>
+
+          <div class="sec-title">حصص فردية</div>
+          <div class="qty">
+            <div><div class="qty-name">حصة قفز</div><div class="qty-meta">150 ريال / الحصة</div></div>
+            <div class="stepper">
+              <button type="button" onclick="bumpQty('qj',-1,150)">−</button>
+              <span class="val" id="qj">0</span>
+              <button type="button" onclick="bumpQty('qj',1,150)">+</button>
+            </div>
+          </div>
+          <div class="qty">
+            <div><div class="qty-name">ركوب حر</div><div class="qty-meta">100 ريال / الحصة</div></div>
+            <div class="stepper">
+              <button type="button" onclick="bumpQty('qr',-1,100)">−</button>
+              <span class="val" id="qr">0</span>
+              <button type="button" onclick="bumpQty('qr',1,100)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- طريقة الدفع -->
+        <div class="sec-title" style="margin-top:20px">طريقة الدفع</div>
+        <div class="opt sel" id="pay-cash" onclick="pickPay('cash')">
+          <input type="radio" name="pay" checked>
+          <div class="opt-info">
+            <div class="opt-name">الدفع عند الوصول</div>
+            <div class="opt-meta">نقداً أو شبكة عند تسليم الخيل</div>
+          </div>
+        </div>
+        <div class="opt" id="pay-transfer" onclick="pickPay('transfer')">
+          <input type="radio" name="pay">
+          <div class="opt-info">
+            <div class="opt-name">تحويل بنكي</div>
+            <div class="opt-meta">حوّل المبلغ وأرفق الإيصال عبر واتساب</div>
+          </div>
+        </div>
+        <div id="bankBox" style="display:none;background:var(--navy-bg);border:1.5px solid var(--navy-pale);border-radius:13px;padding:14px 16px;margin-bottom:10px">
+          <div style="font-weight:800;color:var(--navy-deep);font-size:.9rem;margin-bottom:6px">بيانات التحويل</div>
+          <div style="font-size:.85rem;color:var(--text-sub);line-height:1.9">
+            البنك: <b>—</b><br>
+            اسم المستفيد: <b>مربط الواصلية</b><br>
+            الآيبان: <b dir="ltr">SA00 0000 0000 0000 0000 0000</b>
+          </div>
+          <div style="font-size:.78rem;color:var(--text-mute);margin-top:6px">حدّث بيانات الحساب من المالك.</div>
+        </div>
+
+        <!-- ملاحظات -->
+        <div class="field" style="margin-top:18px">
+          <label>ملاحظات خاصة <span class="opt">(اختياري)</span></label>
+          <textarea id="notes" placeholder="مثال: عليقة خاصة، حالة طبية، أي متطلبات أخرى..."></textarea>
+        </div>
+
+        <!-- إجمالي -->
+        <div class="total-bar">
+          <span class="total-lbl">الإجمالي</span>
+          <span class="total-amt"><small>ريال</small><span id="total">0</span></span>
+        </div>
+
+        <!-- شروط -->
+        <div class="terms" id="termsBox" onclick="document.getElementById('termsChk').click()">
+          <input type="checkbox" id="termsChk" onclick="event.stopPropagation();this.closest('.terms').classList.remove('err')">
+          <div class="terms-txt">أوافق على شروط وأحكام مربط الواصلية وأتحمّل مسؤولية صحة البيانات المُدخلة.</div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-outline" onclick="backFromDetails()">رجوع</button>
+          <button class="btn btn-navy" onclick="submit()">تأكيد الحجز ✓</button>
+        </div>
+      </section>
+
+      <!-- PANEL 5 · نجاح -->
+      <section class="panel" data-p="5">
+        <div class="done">
+          <div class="seal">
+            <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+          </div>
+          <h2>تم استلام طلبك بنجاح!</h2>
+          <p class="lead" style="font-size:.95rem">سيتواصل معك فريق مربط الواصلية لتأكيد الحجز. شكرًا لثقتك بنا.</p>
+          <div class="ref-tag" id="refTag">—</div>
+          <div class="receipt" id="receipt"></div>
+          <div class="wa-panel">
+            <p>شارك تفاصيل حجزك مع المربط أو احتفظ بها</p>
+            <div class="nav" style="margin-top:0">
+              <button class="btn btn-wa" onclick="shareWA()">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.859 1.426 5.481L2.003 22l4.686-1.394c1.565.838 3.339 1.314 5.219 1.314 5.52 0 9.999-4.484 9.999-10.017C21.997 6.484 17.518 2 11.998 2z"/></svg>
+                إرسال عبر واتساب
+              </button>
+              <button class="btn btn-outline" style="flex:0 0 40%" onclick="reset()">حجز جديد</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <!-- ====== INFO SECTION ====== -->
+  <div class="info-section">
+    <div class="info-head">تواصل معنا وتجدنا</div>
+
+    <div class="info-grid">
+
+      <!-- الموقع -->
+      <a class="info-card" href="https://maps.app.goo.gl/bXPATVnaMRz3xRDd9" target="_blank" rel="noopener">
+        <div class="info-ic">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">موقعنا</div>
+          <div class="info-sub">حي ج7 — الطائف</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- واتساب -->
+      <a class="info-card" href="https://wa.me/966540351119" target="_blank" rel="noopener">
+        <div class="info-ic wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.859 1.426 5.481L2.003 22l4.686-1.394c1.565.838 3.339 1.314 5.219 1.314 5.52 0 9.999-4.484 9.999-10.017C21.997 6.484 17.518 2 12 2z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">واتساب</div>
+          <div class="info-sub">0540351119</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- تيك توك -->
+      <a class="info-card" href="https://www.tiktok.com/@yymk1119" target="_blank" rel="noopener">
+        <div class="info-ic tt">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.79 1.52V6.79a4.85 4.85 0 01-1.02-.1z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">تيك توك</div>
+          <div class="info-sub">@yymk1119</div>
+        </div>
+        <div class="info-arrow">‹</div>
+      </a>
+
+      <!-- العنوان -->
+      <div class="info-card" style="cursor:default">
+        <div class="info-ic">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">العنوان</div>
+          <div class="info-sub">8090 السلمانية 178<br>حي ج7 — الطائف 26314</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- الخريطة -->
+    <div class="map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=مربط+الواصلية+الطائف+السعودية&z=15&output=embed"
+        loading="lazy"
+        allowfullscreen
+        title="موقع مربط الواصلية">
+      </iframe>
+      <a class="map-overlay-btn"
+         href="https://maps.app.goo.gl/bXPATVnaMRz3xRDd9"
+         target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        فتح في خرائط قوقل
+      </a>
+    </div>
+
+    <!-- آراء العملاء -->
+    <div class="info-head" style="margin-top:24px">آراء عملائنا</div>
+    <div class="reviews">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">مكان ممتاز والعناية بالخيل فوق الوصف، فريق محترف ومتعاون. أنصح به بشدة.</div>
+        <div class="review-author">— أبو فيصل</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">دربت فرسي على القفز معهم والنتيجة رائعة. أسعار مناسبة ومتابعة يومية.</div>
+        <div class="review-author">— م. خالد</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">إيواء نظيف ومنظّم وموقع قريب. مرتاح على خيلي عندهم.</div>
+        <div class="review-author">— سعد الحارثي</div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="foot">© مربط الواصلية — جميع الحقوق محفوظة</p>
+</main>
+
+<script src="db.js"></script>
+<script>
+/* ====== STATE ====== */
+let cur=0, cat=null;
+let accPM=0, accName='', dur=1;
+let payment='cash';
+const pkgs={};
+const qtys={qj:0,qr:0};
+const qtyPrices={qj:150,qr:100};
+let saved=null;
+
+/* ====== طريقة الدفع ====== */
+function pickPay(p){
+  payment=p;
+  el('pay-cash').classList.toggle('sel',p==='cash');
+  el('pay-transfer').classList.toggle('sel',p==='transfer');
+  el('pay-cash').querySelector('input').checked=p==='cash';
+  el('pay-transfer').querySelector('input').checked=p==='transfer';
+  el('bankBox').style.display=p==='transfer'?'block':'none';
+}
+
+/* ====== NAVIGATION ====== */
+function go(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelector('[data-p="'+n+'"]').classList.add('on');
+  document.querySelectorAll('.step-dot').forEach((d,i)=>d.classList.toggle('on',i<=n));
+  cur=n;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ====== STEP 1 VALIDATION ====== */
+function step1(){
+  const name=v('name'), phone=v('phone'), arrive=v('arrive');
+  let ok=true;
+  const nameOk=name.split(/\s+/).filter(Boolean).length>=3;
+  setErr('f-name',!nameOk); ok&&=nameOk;
+  const phoneOk=/^05\d{8}$/.test(phone);
+  setErr('f-phone',!phoneOk); ok&&=phoneOk;
+  setErr('f-arrive',!arrive); ok&&=!!arrive;
+  // التدريب لا يحتاج بيانات الخيل → انتقل مباشرة لتفاصيل الخدمة
+  if(ok){ if(cat==='train') go(4); else go(3); }
+}
+
+/* ====== الرجوع من تفاصيل الخدمة ====== */
+function backFromDetails(){
+  if(cat==='train') go(2); else go(3);
+}
+
+/* ====== STEP 2 VALIDATION (horse info) ====== */
+function step2(){
+  let ok=true;
+  const hnameOk=v('hname').length>=2;
+  setErr('f-hname',!hnameOk); ok&&=hnameOk;
+  const hgenderOk=!!v('hgender');
+  setErr('f-hgender',!hgenderOk); ok&&=hgenderOk;
+  const hage=+v('hage');
+  const hageOk=hage>=1&&hage<=35;
+  setErr('f-hage',!hageOk); ok&&=hageOk;
+  const hcountOk=!!v('hcount');
+  setErr('f-hcount',!hcountOk); ok&&=hcountOk;
+  if(ok) go(4);
+}
+
+/* ====== PICK CATEGORY ====== */
+function pickCat(c){
+  cat=c;
+  el('grp-acc').style.display=c==='acc'?'block':'none';
+  el('grp-train').style.display=c==='train'?'block':'none';
+  el('svcTitle').textContent=c==='acc'?'تفاصيل الإيواء':'تفاصيل التدريب';
+  // ترقيم الخطوات حسب الخدمة (تدريب = 3 خطوات، إيواء = 4)
+  if(c==='train'){
+    el('eyePersonal').textContent='الخطوة 2 من 3';
+    el('eyeDetails').textContent='الخطوة 3 من 3';
+  }else{
+    el('eyePersonal').textContent='الخطوة 2 من 4';
+    el('eyeDetails').textContent='الخطوة 4 من 4';
+  }
+  // reset
+  accPM=0; accName=''; dur=1;
+  el('durVal').textContent='1';
+  el('durBox').style.display='none';
+  for(const k in pkgs) delete pkgs[k];
+  qtys.qj=0; qtys.qr=0;
+  el('qj').textContent='0'; el('qr').textContent='0';
+  document.querySelectorAll('#grp-acc .opt,#grp-train .opt').forEach(o=>{
+    o.classList.remove('sel');
+    o.querySelector('input').checked=false;
+  });
+  calc(); go(2);
+}
+
+/* ====== ACCOMMODATION SELECT ====== */
+function pickAcc(row,pm){
+  document.querySelectorAll('#grp-acc .opt').forEach(o=>{
+    o.classList.remove('sel'); o.querySelector('input').checked=false;
+  });
+  row.classList.add('sel'); row.querySelector('input').checked=true;
+  accPM=pm; accName=row.querySelector('.opt-name').textContent;
+  el('durBox').style.display='block';
+  updateDurNote(); calc();
+}
+
+/* ====== DURATION ====== */
+function bumpDur(d){
+  dur=Math.max(1,Math.min(24,dur+d));
+  el('durVal').textContent=dur;
+  updateDurNote(); calc();
+}
+function updateDurNote(){
+  const cnt=+v('hcount')||1;
+  const t=accPM*dur*cnt;
+  el('durNote').textContent=dur+' شهر × '+accPM.toLocaleString('en-US')+' ريال × '+cnt+' خيل = '+t.toLocaleString('en-US')+' ريال';
+}
+
+/* ====== PACKAGES ====== */
+function togglePkg(row,key,val){
+  const inp=row.querySelector('input');
+  inp.checked=!inp.checked;
+  row.classList.toggle('sel',inp.checked);
+  if(inp.checked) pkgs[key]={name:row.querySelector('.opt-name').textContent,val};
+  else delete pkgs[key];
+  calc();
+}
+
+/* ====== INDIVIDUAL SESSIONS ====== */
+function bumpQty(id,d,price){
+  qtys[id]=Math.max(0,qtys[id]+d);
+  el(id).textContent=qtys[id];
+  calc();
+}
+
+/* ====== TOTAL ====== */
+function calc(){
+  let t=0;
+  const cnt=+v('hcount')||1;
+  if(cat==='acc') t=accPM*dur*cnt;
+  if(cat==='train'){
+    for(const k in pkgs) t+=pkgs[k].val;
+    t+=qtys.qj*150+qtys.qr*100;
+  }
+  el('total').textContent=t.toLocaleString('en-US');
+  return t;
+}
+
+/* ====== ITEMS SUMMARY ====== */
+function itemLines(){
+  const lines=[], cnt=+v('hcount')||1;
+  if(cat==='acc'&&accName)
+    lines.push(accName+'×'+dur+'شهر'+(cnt>1?' ×'+cnt+'خيول':'')+'('+(accPM*dur*cnt).toLocaleString('en-US')+' ريال)');
+  if(cat==='train'){
+    for(const k in pkgs) lines.push(pkgs[k].name+' ('+pkgs[k].val.toLocaleString('en-US')+' ريال)');
+    if(qtys.qj) lines.push('قفز فردي ×'+qtys.qj+' ('+(qtys.qj*150).toLocaleString('en-US')+' ريال)');
+    if(qtys.qr) lines.push('ركوب حر ×'+qtys.qr+' ('+(qtys.qr*100).toLocaleString('en-US')+' ريال)');
+  }
+  return lines;
+}
+
+/* ====== SUBMIT ====== */
+function submit(){
+  const total=calc(), lines=itemLines();
+  if(!lines.length){ alert('يُرجى اختيار خدمة واحدة على الأقل.'); return; }
+  const tc=el('termsChk');
+  if(!tc.checked){ el('termsBox').classList.add('err'); el('termsBox').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+
+  const now=new Date();
+  const ref='WSL-'+now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+'-'+Math.floor(1000+Math.random()*9000);
+  const isAcc=cat==='acc';
+  const cnt=v('hcount');
+
+  saved={
+    ref,
+    name:    v('name'),
+    phone:   v('phone'),
+    arrive:  v('arrive'),
+    category: isAcc?'إيواء':'تدريب',
+    horseName:  isAcc?v('hname'):'',
+    horseGender:isAcc?v('hgender'):'',
+    horseAge:   isAcc?v('hage'):'',
+    horseBreed: isAcc?v('hbreed'):'',
+    horseCount: isAcc?cnt:'',
+    duration:   isAcc?dur+'شهر':'—',
+    payment: payment==='transfer'?'تحويل بنكي':'عند الوصول',
+    notes:   v('notes'),
+    items:   lines.join(' + '),
+    total,
+    status: 'معلّق',
+    createdAt: now.toISOString()
+  };
+
+  // حفظ محلي + سحابي (إن كان مُعدّاً)
+  WSL.save(saved);
+
+  const fd=saved.arrive?saved.arrive.split('-').reverse().join('/'):'—';
+  el('refTag').textContent='رقم الطلب: '+ref;
+  el('receipt').innerHTML=
+    rr('الاسم',saved.name)+
+    rr('الجوال',saved.phone)+
+    rr('تاريخ الوصول',fd)+
+    (saved.horseName?rr('الخيل',saved.horseName+' — '+saved.horseGender+' — '+saved.horseAge+' سنوات'+(+cnt>1?' ('+cnt+' خيول)':'')):'')+
+    (saved.horseBreed?rr('السلالة',saved.horseBreed):'')+
+    rr('الخدمة',saved.category)+
+    (saved.duration!=='—'?rr('المدة',saved.duration):'')+
+    rr('التفاصيل',saved.items)+
+    rr('طريقة الدفع',saved.payment)+
+    (saved.notes?rr('ملاحظات',saved.notes):'')+
+    rr('الإجمالي',saved.total.toLocaleString('en-US')+' ريال');
+
+  // إشعار واتساب تلقائي للمربط ضمن نقرة المستخدم
+  shareWA();
+  go(5);
+}
+function rr(a,b){ return '<div class="row"><span>'+a+'</span><span>'+esc(b)+'</span></div>'; }
+
+/* ====== WHATSAPP ====== */
+function shareWA(){
+  if(!saved) return;
+  const fd=saved.arrive?saved.arrive.split('-').reverse().join('/'):'—';
+  const msg=[
+    '🐎 *حجز مربط الواصلية*',
+    '━━━━━━━━━━━━━━',
+    '📋 رقم الطلب: '+saved.ref,
+    '👤 '+saved.name,
+    '📱 '+saved.phone,
+    '📅 الوصول: '+fd,
+    (saved.horseName?'━━━━━━━━━━━━━━':''),
+    (saved.horseName?'🐴 '+saved.horseName+' ('+saved.horseGender+' — '+saved.horseAge+' سنوات)':''),
+    (saved.horseBreed?'🔖 '+saved.horseBreed:''),
+    (saved.horseCount?'🔢 العدد: '+saved.horseCount:''),
+    '━━━━━━━━━━━━━━',
+    '📦 '+saved.category+(saved.duration!=='—'?' — '+saved.duration:''),
+    '📝 '+saved.items,
+    '💳 الدفع: '+saved.payment,
+    (saved.notes?'💬 '+saved.notes:''),
+    '━━━━━━━━━━━━━━',
+    '💰 الإجمالي: '+saved.total.toLocaleString('en-US')+' ريال'
+  ].filter(Boolean).join('\n');
+  window.open('https://wa.me/966540351119?text='+encodeURIComponent(msg),'_blank');
+}
+
+/* ====== RESET ====== */
+function reset(){
+  ['name','phone','arrive','hname','hage','hbreed','notes'].forEach(id=>el(id).value='');
+  ['hgender','hcount'].forEach(id=>el(id).value='');
+  el('termsChk').checked=false;
+  el('termsBox').classList.remove('err');
+  pickPay('cash');
+  cat=null; accPM=0; accName=''; dur=1; saved=null;
+  for(const k in pkgs) delete pkgs[k];
+  qtys.qj=0; qtys.qr=0;
+  document.querySelectorAll('.field.err').forEach(f=>f.classList.remove('err'));
+  go(0);
+}
+
+/* ====== HELPERS ====== */
+function el(id){ return document.getElementById(id) }
+function v(id){ return (el(id).value||'').trim() }
+function setErr(id,bad){ el(id).classList.toggle('err',bad) }
+function esc(s){ return (s||'').toString().replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])) }
+
+// لا تاريخ ماضٍ
+el('arrive').min=new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
