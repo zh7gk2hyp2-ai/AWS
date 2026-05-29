@@ -4,12 +4,12 @@
    • مجاني 100% (Spark Plan — لا بطاقة بنكية).
    • يعمل افتراضياً بالتخزين المحلي على الجهاز.
    • لمزامنة الحجوزات بين جميع الأجهزة:
-       1. اتبع خطوتين في ملف "دليل-الإعداد.md".
-       2. الصق رابط قاعدة البيانات والسر أدناه.
+       1. أنشئ مشروع Firebase وأنشئ Realtime Database.
+       2. في Rules اضبط read/write على true.
+       3. الصق رابط قاعدة البيانات أدناه.
    ============================================================ */
 
-const FIREBASE_URL    = ''; // مثال: https://my-stable-rtdb.firebaseio.com
-const FIREBASE_SECRET = ''; // سر قاعدة البيانات (من الإعدادات)
+const FIREBASE_URL = ''; // مثال: https://my-stable-rtdb.firebaseio.com
 
 const STORE_KEY = 'wsl_bookings';
 
@@ -20,7 +20,7 @@ const WSL = {
     const local = this._local();
     if(!FIREBASE_URL) return local;
     try{
-      const res  = await fetch(`${FIREBASE_URL}/bookings.json?auth=${FIREBASE_SECRET}`);
+      const res  = await fetch(`${FIREBASE_URL}/bookings.json`);
       const data = await res.json();
       if(!data || typeof data !== 'object') return local;
 
@@ -43,13 +43,12 @@ const WSL = {
     this._setLocal(arr);
     if(!FIREBASE_URL) return;
     try{
-      const res  = await fetch(`${FIREBASE_URL}/bookings.json?auth=${FIREBASE_SECRET}`, {
+      const res  = await fetch(`${FIREBASE_URL}/bookings.json`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(booking)
       });
       const {name: fbKey} = await res.json();
-      // احفظ مفتاح Firebase محلياً للتحديث والحذف لاحقاً
       this._setLocal(this._local().map(b => b.ref === booking.ref ? {...b, _fbKey: fbKey} : b));
     }catch(e){ console.warn('Firebase: تعذّر الحفظ (حُفظ محلياً)', e); }
   },
@@ -61,7 +60,7 @@ const WSL = {
     this._setLocal(arr.map(b => b.ref === ref ? {...b, status} : b));
     if(!FIREBASE_URL || !booking?._fbKey) return;
     try{
-      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json?auth=${FIREBASE_SECRET}`, {
+      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({status})
@@ -76,7 +75,7 @@ const WSL = {
     this._setLocal(arr.filter(b => b.ref !== ref));
     if(!FIREBASE_URL || !booking?._fbKey) return;
     try{
-      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json?auth=${FIREBASE_SECRET}`, {
+      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json`, {
         method: 'DELETE'
       });
     }catch(e){ console.warn('Firebase: تعذّر الحذف', e); }
