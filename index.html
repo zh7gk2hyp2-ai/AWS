@@ -47,12 +47,14 @@ body{
   pointer-events:none;
 }
 .logo-wrap{
-  width:88px;height:88px;border-radius:50%;
-  background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.18);
+  width:96px;height:96px;border-radius:50%;
+  background:#fff;border:3px solid rgba(255,255,255,.35);
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 14px;
-  box-shadow:0 0 0 8px rgba(255,255,255,.04);
+  box-shadow:0 0 0 8px rgba(255,255,255,.08);
+  overflow:hidden;
 }
+.logo-wrap img{width:80px;height:80px;object-fit:contain;display:block}
 .logo-wrap svg{width:62px;height:56px;color:#fff}
 .brand{font-family:'Amiri',serif;color:#fff;font-size:2rem;font-weight:700;letter-spacing:.5px}
 .brand-sub{color:rgba(255,255,255,.6);font-size:.92rem;margin-top:5px;font-weight:400}
@@ -382,7 +384,7 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 <!-- ====== HEADER ====== -->
 <header class="header">
   <div class="logo-wrap">
-    <img src="logo.svg" alt="شعار مربط الواصلية" style="width:66px;height:60px;filter:brightness(0) invert(1)">
+    <img src="logo.png" alt="شعار مربط الواصلية">
   </div>
   <div class="brand">مربط الواصلية</div>
   <div class="brand-sub">الإيواء والتدريب — حيث تليق بخيلك العناية</div>
