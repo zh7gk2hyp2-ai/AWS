@@ -368,6 +368,44 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
 .feature-ic svg{width:18px;height:18px;fill:#fff}
 .feature-txt{font-size:.85rem;font-weight:700;color:var(--navy-deep);line-height:1.4}
 
+/* ====== GALLERY ====== */
+.gallery-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;margin-bottom:8px;
+}
+.gallery-item{
+  border-radius:14px;overflow:hidden;
+  aspect-ratio:3/4;cursor:pointer;position:relative;
+  box-shadow:var(--shadow-sm);
+}
+.gallery-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .35s ease;display:block;
+}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-item::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(12,24,64,.45));
+  pointer-events:none;
+}
+
+/* lightbox */
+.lb{
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,.92);align-items:center;justify-content:center;
+}
+.lb.open{display:flex}
+.lb img{
+  max-width:95vw;max-height:92vh;
+  border-radius:10px;object-fit:contain;
+}
+.lb-close{
+  position:absolute;top:14px;left:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.18);border:none;cursor:pointer;
+  font-size:1.4rem;color:#fff;display:flex;align-items:center;justify-content:center;
+}
+
 /* ====== TESTIMONIALS ====== */
 .reviews{display:grid;gap:12px;margin-bottom:8px}
 .review{
@@ -771,6 +809,29 @@ h2{font-family:'Amiri',serif;color:var(--navy-deep);font-size:1.55rem;margin:6px
       </a>
     </div>
 
+    <!-- معرض الصور -->
+    <div class="info-head" style="margin-top:24px">من المربط</div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLB('photo1.jpg')">
+        <img src="photo1.jpg" alt="خيول مربط الواصلية" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB('photo2.jpg')">
+        <img src="photo2.jpg" alt="خيول مربط الواصلية" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB('photo3.jpg')">
+        <img src="photo3.jpg" alt="مربط الواصلية" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB('photo4.jpg')">
+        <img src="photo4.jpg" alt="مدخل مربط الواصلية" loading="lazy">
+      </div>
+    </div>
+
+    <!-- lightbox -->
+    <div class="lb" id="lb" onclick="closeLB()">
+      <button class="lb-close" onclick="closeLB()">✕</button>
+      <img id="lb-img" src="" alt="">
+    </div>
+
     <!-- آراء العملاء -->
     <div class="info-head" style="margin-top:24px">آراء عملائنا</div>
     <div class="reviews">
@@ -806,6 +867,19 @@ const pkgs={};
 const qtys={qj:0,qr:0};
 const qtyPrices={qj:150,qr:100};
 let saved=null;
+
+/* ====== معرض الصور ====== */
+function openLB(src){
+  el('lb-img').src=src;
+  el('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  el('lb').classList.remove('open');
+  el('lb-img').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLB(); });
 
 /* ====== طريقة الدفع ====== */
 function pickPay(p){
