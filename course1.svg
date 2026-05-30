@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 580" font-family="Arial,sans-serif">
+  <!-- خلفية -->
+  <rect width="400" height="580" fill="#f5f0e8"/>
+  <!-- الحلبة -->
+  <rect x="30" y="50" width="340" height="500" rx="28" fill="#e8dfc8" stroke="#444" stroke-width="6"/>
+  <!-- حشائش الأركان -->
+  <circle cx="55" cy="75" r="14" fill="#4a7c59"/><circle cx="68" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="75" r="14" fill="#4a7c59"/><circle cx="332" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="505" r="14" fill="#4a7c59"/><circle cx="68" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="505" r="14" fill="#4a7c59"/><circle cx="332" cy="512" r="11" fill="#3d6b4a"/>
+  <!-- زوايا إضافية -->
+  <circle cx="200" cy="65" r="10" fill="#4a7c59"/>
+  <circle cx="200" cy="515" r="10" fill="#4a7c59"/>
+  <!-- البداية والنهاية -->
+  <rect x="160" y="38" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="56" text-anchor="middle" fill="white" font-size="13" font-weight="bold">البداية</text>
+  <rect x="160" y="516" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="534" text-anchor="middle" fill="white" font-size="13" font-weight="bold">النهاية</text>
+
+  <!-- مسار الكورس - خط منقط -->
+  <path d="M200 90 Q200 160 120 200 Q80 230 120 290 Q160 340 280 300 Q340 280 320 380"
+        fill="none" stroke="#1a2d70" stroke-width="2.5" stroke-dasharray="8,6" opacity="0.6"/>
+  <path d="M320 380 Q310 460 200 490"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-dasharray="8,6" opacity="0.6"/>
+
+  <!-- سهام الاتجاه -->
+  <polygon points="115,196 125,204 115,212" fill="#1a2d70"/>
+  <polygon points="123,284 131,294 119,294" fill="#1a2d70"/>
+  <polygon points="316,374 326,382 314,384" fill="#888"/>
+
+  <!-- الحاجز 1 -->
+  <rect x="90" y="196" width="60" height="8" rx="3" fill="#c0392b"/>
+  <line x1="92" y1="196" x2="92" y2="186" stroke="#555" stroke-width="3"/>
+  <line x1="148" y1="196" x2="148" y2="186" stroke="#555" stroke-width="3"/>
+  <circle cx="120" cy="185" r="14" fill="#1a2d70"/>
+  <text x="120" y="190" text-anchor="middle" fill="white" font-size="13" font-weight="bold">1</text>
+
+  <!-- الحاجز 2 -->
+  <rect x="100" y="285" width="60" height="8" rx="3" fill="#27ae60"/>
+  <line x1="102" y1="285" x2="102" y2="275" stroke="#555" stroke-width="3"/>
+  <line x1="158" y1="285" x2="158" y2="275" stroke="#555" stroke-width="3"/>
+  <circle cx="130" cy="274" r="14" fill="#1a2d70"/>
+  <text x="130" y="279" text-anchor="middle" fill="white" font-size="13" font-weight="bold">2</text>
+
+  <!-- الحاجز 3 -->
+  <rect x="260" y="295" width="60" height="8" rx="3" fill="#8e44ad"/>
+  <line x1="262" y1="295" x2="262" y2="285" stroke="#555" stroke-width="3"/>
+  <line x1="318" y1="295" x2="318" y2="285" stroke="#555" stroke-width="3"/>
+  <circle cx="290" cy="284" r="14" fill="#1a2d70"/>
+  <text x="290" y="289" text-anchor="middle" fill="white" font-size="13" font-weight="bold">3</text>
+
+  <!-- شعار صغير -->
+  <text x="200" y="550" text-anchor="middle" fill="#888" font-size="10">مربط الواصلية</text>
+</svg>
