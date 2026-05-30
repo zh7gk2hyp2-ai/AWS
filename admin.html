@@ -38,10 +38,12 @@ body{font-family:'Tajawal',sans-serif;background:var(--navy-bg);color:var(--text
   border-bottom:3px solid var(--navy-mid);
 }
 .header-logo{
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);
+  width:52px;height:52px;border-radius:50%;
+  background:#fff;border:2px solid rgba(255,255,255,.3);
   display:flex;align-items:center;justify-content:center;flex:none;
+  overflow:hidden;
 }
+.header-logo img{width:42px;height:42px;object-fit:contain;display:block}
 .header-logo svg{width:34px;height:30px;color:#fff}
 .header-text .brand{font-family:'Amiri',serif;color:#fff;font-size:1.35rem;font-weight:700}
 .header-text .sub{color:rgba(255,255,255,.55);font-size:.82rem}
@@ -187,7 +189,7 @@ tr:hover td{background:var(--navy-bg)}
 <!-- ====== HEADER ====== -->
 <header class="header">
   <div class="header-logo">
-    <img src="logo.svg" alt="شعار مربط الواصلية" style="width:36px;height:32px;filter:brightness(0) invert(1)">
+    <img src="logo.png" alt="شعار مربط الواصلية">
   </div>
   <div class="header-text">
     <div class="brand">مربط الواصلية</div>
