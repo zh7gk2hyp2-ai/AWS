@@ -16,12 +16,14 @@ const STORE_KEY = 'wsl_bookings';
 
 const WSL = {
 
+  _auth(){ return FIREBASE_SECRET.trim() ? `?auth=${FIREBASE_SECRET.trim()}` : ''; },
+
   /* ---- قراءة البيانات ---- */
   async getAll(){
     const local = this._local();
     if(!FIREBASE_URL) return local;
     try{
-      const res  = await fetch(`${FIREBASE_URL}/bookings.json`);
+      const res  = await fetch(`${FIREBASE_URL}/bookings.json${this._auth()}`);
       const data = await res.json();
       if(!data || typeof data !== 'object') return local;
 
@@ -44,7 +46,7 @@ const WSL = {
     this._setLocal(arr);
     if(!FIREBASE_URL) return;
     try{
-      const res  = await fetch(`${FIREBASE_URL}/bookings.json`, {
+      const res  = await fetch(`${FIREBASE_URL}/bookings.json${this._auth()}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(booking)
@@ -61,7 +63,7 @@ const WSL = {
     this._setLocal(arr.map(b => b.ref === ref ? {...b, status} : b));
     if(!FIREBASE_URL || !booking?._fbKey) return;
     try{
-      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json`, {
+      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json${this._auth()}`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({status})
@@ -76,7 +78,7 @@ const WSL = {
     this._setLocal(arr.filter(b => b.ref !== ref));
     if(!FIREBASE_URL || !booking?._fbKey) return;
     try{
-      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json`, {
+      await fetch(`${FIREBASE_URL}/bookings/${booking._fbKey}.json${this._auth()}`, {
         method: 'DELETE'
       });
     }catch(e){ console.warn('Firebase: تعذّر الحذف', e); }
