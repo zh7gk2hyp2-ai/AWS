@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مربط الواصلية | مكتبة الكورسات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:      #1a2d70;
+  --navy-deep: #0c1840;
+  --navy-mid:  #2448b0;
+  --navy-lite: #3a5cc8;
+  --navy-pale: #dde5f8;
+  --navy-bg:   #f0f3fc;
+  --white:     #ffffff;
+  --border:    #bfcce8;
+  --text:      #0c1840;
+  --text-sub:  #4a5c90;
+  --text-mute: #8898c5;
+  --green:     #16a34a;
+  --shadow:    0 12px 48px rgba(12,24,64,.12);
+  --shadow-sm: 0 4px 16px rgba(12,24,64,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--navy-bg);color:var(--text);min-height:100vh}
+
+/* ===== HEADER ===== */
+.header{
+  background:var(--navy-deep);
+  padding:22px 20px;
+  display:flex;align-items:center;gap:14px;
+  position:relative;overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% -20%, rgba(52,92,200,.4) 0%, transparent 70%);
+  pointer-events:none;
+}
+.logo-wrap{
+  width:52px;height:52px;border-radius:50%;
+  background:#fff;border:2px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;flex:none;
+  overflow:hidden;position:relative;z-index:1;
+}
+.logo-wrap img{width:42px;height:42px;object-fit:contain;display:block}
+.header-text{position:relative;z-index:1;flex:1}
+.header-text .brand{font-family:'Amiri',serif;color:#fff;font-size:1.35rem;font-weight:700}
+.header-text .sub{color:rgba(255,255,255,.55);font-size:.82rem}
+.back-btn{
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);
+  color:#fff;font-family:'Tajawal',sans-serif;font-size:.88rem;font-weight:700;
+  padding:8px 14px;border-radius:10px;cursor:pointer;text-decoration:none;
+  transition:background .2s;white-space:nowrap;
+}
+.back-btn:hover{background:rgba(255,255,255,.18)}
+.back-btn svg{width:16px;height:16px;fill:#fff}
+
+/* ===== PAGE BODY ===== */
+.page{max-width:580px;margin:0 auto;padding:24px 16px 60px}
+
+.page-head{
+  font-family:'Amiri',serif;color:var(--navy-deep);
+  font-size:1.7rem;font-weight:700;
+  margin-bottom:6px;
+}
+.page-sub{color:var(--text-sub);font-size:.95rem;line-height:1.8;margin-bottom:24px}
+
+/* ===== FILTER CHIPS ===== */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{
+  padding:7px 16px;border-radius:20px;
+  border:1.5px solid var(--border);background:var(--white);
+  font-size:.85rem;font-weight:700;color:var(--text-sub);
+  cursor:pointer;transition:all .2s;
+}
+.chip.on,.chip:hover{
+  background:var(--navy-deep);color:#fff;border-color:var(--navy-deep);
+}
+
+/* ===== COURSE GRID ===== */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:380px){.grid{grid-template-columns:1fr}}
+
+.course-card{
+  background:var(--white);border-radius:18px;
+  border:1.5px solid var(--border);box-shadow:var(--shadow-sm);
+  overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;
+}
+.course-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+
+.course-img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;display:block;
+}
+.course-body{padding:14px 13px}
+
+.course-name{
+  font-family:'Amiri',serif;font-size:1.05rem;font-weight:700;
+  color:var(--navy-deep);margin-bottom:10px;line-height:1.4;
+}
+.course-specs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.spec{
+  background:var(--navy-bg);border-radius:8px;
+  padding:6px 8px;display:flex;flex-direction:column;gap:2px;
+}
+.spec-label{font-size:.68rem;color:var(--text-mute);font-weight:700}
+.spec-val{font-size:.82rem;color:var(--navy-deep);font-weight:700}
+
+.badge{
+  display:inline-block;padding:3px 10px;border-radius:20px;
+  font-size:.72rem;font-weight:800;margin-top:10px;
+}
+.badge.easy{background:#dcfce7;color:#15803d}
+.badge.mid{background:#fef9c3;color:#a16207}
+.badge.hard{background:#fee2e2;color:#b91c1c}
+
+/* ===== BOOK BTN ===== */
+.book-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--white);border-top:1.5px solid var(--border);
+  padding:14px 20px;display:flex;justify-content:center;
+  box-shadow:0 -4px 20px rgba(12,24,64,.1);
+}
+.book-btn{
+  display:block;width:100%;max-width:400px;
+  background:var(--navy-deep);color:#fff;
+  font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:800;
+  padding:14px;border-radius:14px;border:none;cursor:pointer;
+  text-align:center;text-decoration:none;
+  transition:background .2s;
+}
+.book-btn:hover{background:var(--navy-mid)}
+
+/* ===== LIGHTBOX ===== */
+.lb{
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,.94);align-items:center;justify-content:center;
+  flex-direction:column;gap:16px;padding:16px;
+}
+.lb.open{display:flex}
+.lb-img{
+  max-width:100%;max-height:82vh;
+  border-radius:12px;object-fit:contain;
+}
+.lb-close{
+  position:absolute;top:14px;left:14px;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.15);border:none;cursor:pointer;
+  font-size:1.4rem;color:#fff;display:flex;align-items:center;justify-content:center;
+}
+.lb-title{
+  color:#fff;font-family:'Amiri',serif;font-size:1.15rem;font-weight:700;
+  text-align:center;
+}
+
+/* ===== EMPTY ===== */
+.empty{
+  grid-column:1/-1;text-align:center;
+  padding:48px 20px;color:var(--text-mute);
+}
+.empty svg{width:48px;height:48px;fill:var(--navy-pale);margin-bottom:12px}
+
+/* ===== FOOTER ===== */
+.foot{text-align:center;color:var(--text-mute);font-size:.8rem;padding:0 16px 16px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-wrap">
+    <img src="logo.png" alt="شعار مربط الواصلية">
+  </div>
+  <div class="header-text">
+    <div class="brand">مربط الواصلية</div>
+    <div class="sub">مكتبة الكورسات</div>
+  </div>
+  <a href="index.html" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M10 19l-7-7 7-7v4h11v6H10v4z"/></svg>
+    الرئيسية
+  </a>
+</header>
+
+<!-- PAGE -->
+<div class="page">
+  <h1 class="page-head">كورسات قفز الحواجز</h1>
+  <p class="page-sub">تصاميم الكورسات المعتمدة في مربط الواصلية — يمكنك مشاهدة المسار بالكامل والتسجيل في التدريب.</p>
+
+  <!-- فلاتر -->
+  <div class="chips">
+    <div class="chip on" onclick="filter(this,'الكل')">الكل</div>
+    <div class="chip" onclick="filter(this,'سهل')">سهل</div>
+    <div class="chip" onclick="filter(this,'متوسط')">متوسط</div>
+    <div class="chip" onclick="filter(this,'صعب')">صعب</div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid" id="grid"></div>
+
+  <p class="foot" style="margin-top:80px">© مربط الواصلية — جميع الحقوق محفوظة</p>
+</div>
+
+<!-- زر الحجز -->
+<div class="book-bar">
+  <a href="index.html" class="book-btn">احجز تدريب الآن</a>
+</div>
+
+<!-- lightbox -->
+<div class="lb" id="lb" onclick="closeLB(event)">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <div class="lb-title" id="lb-title"></div>
+</div>
+
+<script>
+const COURSES = [
+  {
+    id:1,
+    name:'كورس قفز الحواجز — 80 سم',
+    img:'course1.jpg',
+    category:'80cm',
+    speed:'350 متر/دقيقة',
+    jumps:'5 حواجز',
+    length:'320 متر',
+    rules:'FEI',
+    difficulty:'متوسط',
+    notes:'يُوصى بالتحكم في السرعة بعد الحاجز 3'
+  },
+  /* أضف كورسات إضافية هنا بنفس الشكل */
+];
+
+let active = 'الكل';
+
+function render(list){
+  const g = document.getElementById('grid');
+  if(!list.length){
+    g.innerHTML = `<div class="empty">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      <p>لا توجد كورسات في هذه الفئة</p>
+    </div>`;
+    return;
+  }
+  g.innerHTML = list.map(c=>`
+    <div class="course-card" onclick="openLB(${c.id})">
+      <img class="course-img" src="${c.img}" alt="${c.name}" loading="lazy"
+           onerror="this.style.background='#dde5f8';this.style.minHeight='200px';this.removeAttribute('src')">
+      <div class="course-body">
+        <div class="course-name">${c.name}</div>
+        <div class="course-specs">
+          <div class="spec"><span class="spec-label">الفئة</span><span class="spec-val">${c.category}</span></div>
+          <div class="spec"><span class="spec-label">الحواجز</span><span class="spec-val">${c.jumps}</span></div>
+          <div class="spec"><span class="spec-label">الطول</span><span class="spec-val">${c.length}</span></div>
+          <div class="spec"><span class="spec-label">السرعة</span><span class="spec-val">${c.speed}</span></div>
+        </div>
+        <span class="badge ${c.difficulty==='سهل'?'easy':c.difficulty==='صعب'?'hard':'mid'}">${c.difficulty}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filter(el, val){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  active = val;
+  const list = val==='الكل' ? COURSES : COURSES.filter(c=>c.difficulty===val);
+  render(list);
+}
+
+function openLB(id){
+  const c = COURSES.find(x=>x.id===id);
+  if(!c) return;
+  document.getElementById('lb-img').src = c.img;
+  document.getElementById('lb-title').textContent = c.name;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeLB(e){
+  if(e && e.target !== document.getElementById('lb') &&
+     !e.target.classList.contains('lb-close')) return;
+  document.getElementById('lb').classList.remove('open');
+  document.getElementById('lb-img').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+
+render(COURSES);
+</script>
+</body>
+</html>
