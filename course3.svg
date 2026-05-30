@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 580" font-family="Arial,sans-serif">
+  <rect width="400" height="580" fill="#f5f0e8"/>
+  <rect x="30" y="50" width="340" height="500" rx="28" fill="#e8dfc8" stroke="#444" stroke-width="6"/>
+  <!-- حشائش -->
+  <circle cx="55" cy="75" r="14" fill="#4a7c59"/><circle cx="68" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="75" r="14" fill="#4a7c59"/><circle cx="332" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="505" r="14" fill="#4a7c59"/><circle cx="68" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="505" r="14" fill="#4a7c59"/><circle cx="332" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="180" r="9" fill="#4a7c59"/>
+  <circle cx="345" cy="180" r="9" fill="#4a7c59"/>
+  <circle cx="55" cy="400" r="9" fill="#4a7c59"/>
+  <circle cx="345" cy="400" r="9" fill="#4a7c59"/>
+  <circle cx="200" cy="65" r="10" fill="#4a7c59"/>
+  <circle cx="200" cy="515" r="10" fill="#4a7c59"/>
+  <!-- بداية/نهاية -->
+  <rect x="160" y="38" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="56" text-anchor="middle" fill="white" font-size="13" font-weight="bold">البداية</text>
+  <rect x="160" y="516" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="534" text-anchor="middle" fill="white" font-size="13" font-weight="bold">النهاية</text>
+
+  <!-- مسارات -->
+  <path d="M200 90 Q310 110 320 165" fill="none" stroke="#2980b9" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M320 165 Q330 220 260 240" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M260 240 Q200 260 150 220" fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M150 220 Q80 190 80 290" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M80 290 Q80 360 150 380" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M150 380 Q220 400 260 360" fill="none" stroke="#16a085" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M260 360 Q320 340 310 430" fill="none" stroke="#d35400" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M310 430 Q300 490 200 500" fill="none" stroke="#888" stroke-width="2.5" stroke-dasharray="8,6"/>
+
+  <!-- الحواجز 1-7 -->
+  <!-- 1 -->
+  <rect x="295" y="159" width="52" height="8" rx="3" fill="#2980b9"/>
+  <circle cx="321" cy="148" r="13" fill="#1a2d70"/>
+  <text x="321" y="153" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1</text>
+  <!-- 2 -->
+  <rect x="232" y="234" width="52" height="8" rx="3" fill="#27ae60"/>
+  <circle cx="258" cy="223" r="13" fill="#1a2d70"/>
+  <text x="258" y="228" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2</text>
+  <!-- 3 (مزدوج) -->
+  <rect x="120" y="214" width="52" height="7" rx="3" fill="#8e44ad"/>
+  <rect x="120" y="225" width="52" height="7" rx="3" fill="#8e44ad" opacity=".6"/>
+  <circle cx="146" cy="203" r="13" fill="#1a2d70"/>
+  <text x="146" y="208" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3</text>
+  <!-- 4 -->
+  <rect x="52" y="284" width="52" height="8" rx="3" fill="#e67e22" transform="rotate(-90 78 288)"/>
+  <circle cx="67" cy="288" r="13" fill="#1a2d70"/>
+  <text x="67" y="293" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4</text>
+  <!-- 5 -->
+  <rect x="52" y="374" width="52" height="8" rx="3" fill="#c0392b" transform="rotate(-90 78 378)"/>
+  <circle cx="67" cy="378" r="13" fill="#1a2d70"/>
+  <text x="67" y="383" text-anchor="middle" fill="white" font-size="12" font-weight="bold">5</text>
+  <!-- 6 -->
+  <rect x="226" y="354" width="52" height="8" rx="3" fill="#16a085"/>
+  <circle cx="252" cy="343" r="13" fill="#1a2d70"/>
+  <text x="252" y="348" text-anchor="middle" fill="white" font-size="12" font-weight="bold">6</text>
+  <!-- 7 -->
+  <rect x="282" y="424" width="52" height="8" rx="3" fill="#d35400"/>
+  <circle cx="308" cy="413" r="13" fill="#1a2d70"/>
+  <text x="308" y="418" text-anchor="middle" fill="white" font-size="12" font-weight="bold">7</text>
+
+  <text x="200" y="550" text-anchor="middle" fill="#888" font-size="10">مربط الواصلية</text>
+</svg>

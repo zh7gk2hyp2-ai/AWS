@@ -220,9 +220,21 @@ body{font-family:'Tajawal',sans-serif;background:var(--navy-bg);color:var(--text
 const COURSES = [
   {
     id:1,
+    name:'كورس المبتدئين — 60 سم',
+    img:'course1.svg',
+    category:'60 سم',
+    speed:'300 متر/دقيقة',
+    jumps:'3 حواجز',
+    length:'220 متر',
+    rules:'محلية',
+    difficulty:'سهل',
+    notes:'مناسب للمبتدئين والخيل التي تبدأ تدريب القفز'
+  },
+  {
+    id:2,
     name:'كورس قفز الحواجز — 80 سم',
-    img:'course1.jpg',
-    category:'80cm',
+    img:'course2.svg',
+    category:'80 سم',
     speed:'350 متر/دقيقة',
     jumps:'5 حواجز',
     length:'320 متر',
@@ -230,7 +242,30 @@ const COURSES = [
     difficulty:'متوسط',
     notes:'يُوصى بالتحكم في السرعة بعد الحاجز 3'
   },
-  /* أضف كورسات إضافية هنا بنفس الشكل */
+  {
+    id:3,
+    name:'كورس المتقدمين — 100 سم',
+    img:'course3.svg',
+    category:'100 سم',
+    speed:'375 متر/دقيقة',
+    jumps:'7 حواجز',
+    length:'450 متر',
+    rules:'FEI',
+    difficulty:'متوسط',
+    notes:'يحتوي على حاجز مزدوج عند رقم 3 يتطلب ضبط الإيقاع'
+  },
+  {
+    id:4,
+    name:'كورس البطولة — 120 سم',
+    img:'course4.svg',
+    category:'120 سم',
+    speed:'400 متر/دقيقة',
+    jumps:'8 حواجز',
+    length:'560 متر',
+    rules:'FEI ⭐',
+    difficulty:'صعب',
+    notes:'كورس بطولي — يتطلب خبرة عالية وتدريباً مسبقاً'
+  },
 ];
 
 let active = 'الكل';
@@ -274,7 +309,8 @@ function openLB(id){
   const c = COURSES.find(x=>x.id===id);
   if(!c) return;
   document.getElementById('lb-img').src = c.img;
-  document.getElementById('lb-title').textContent = c.name;
+  document.getElementById('lb-title').textContent =
+    c.name + (c.notes ? '\n💡 ' + c.notes : '');
   document.getElementById('lb').classList.add('open');
   document.body.style.overflow='hidden';
 }

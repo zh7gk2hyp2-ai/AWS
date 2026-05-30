@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 580" font-family="Arial,sans-serif">
+  <rect width="400" height="580" fill="#f5f0e8"/>
+  <rect x="30" y="50" width="340" height="500" rx="28" fill="#e8dfc8" stroke="#444" stroke-width="6"/>
+  <!-- حشائش -->
+  <circle cx="55" cy="75" r="14" fill="#4a7c59"/><circle cx="68" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="75" r="14" fill="#4a7c59"/><circle cx="332" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="505" r="14" fill="#4a7c59"/><circle cx="68" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="505" r="14" fill="#4a7c59"/><circle cx="332" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="290" r="10" fill="#4a7c59"/>
+  <circle cx="345" cy="290" r="10" fill="#4a7c59"/>
+  <circle cx="200" cy="65" r="10" fill="#4a7c59"/>
+  <circle cx="200" cy="515" r="10" fill="#4a7c59"/>
+  <!-- بداية/نهاية -->
+  <rect x="160" y="38" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="56" text-anchor="middle" fill="white" font-size="13" font-weight="bold">البداية</text>
+  <rect x="160" y="516" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="534" text-anchor="middle" fill="white" font-size="13" font-weight="bold">النهاية</text>
+
+  <!-- مسارات -->
+  <path d="M200 90 Q260 130 280 180" fill="none" stroke="#2980b9" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M280 180 Q300 240 200 260" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M200 260 Q130 280 120 340" fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M120 340 Q110 400 200 430" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <path d="M200 430 Q280 450 300 490" fill="none" stroke="#888" stroke-width="2.5" stroke-dasharray="8,6"/>
+
+  <!-- سهام -->
+  <polygon points="277,174 283,184 271,184" fill="#2980b9"/>
+  <polygon points="196,254 204,264 192,264" fill="#27ae60"/>
+  <polygon points="116,334 124,344 112,344" fill="#8e44ad"/>
+  <polygon points="196,424 204,434 192,434" fill="#e67e22"/>
+  <polygon points="296,484 304,494 292,494" fill="#888"/>
+
+  <!-- الحاجز 1 -->
+  <rect x="255" y="174" width="55" height="8" rx="3" fill="#2980b9"/>
+  <line x1="257" y1="174" x2="257" y2="164" stroke="#555" stroke-width="3"/>
+  <line x1="308" y1="174" x2="308" y2="164" stroke="#555" stroke-width="3"/>
+  <circle cx="282" cy="163" r="14" fill="#1a2d70"/>
+  <text x="282" y="168" text-anchor="middle" fill="white" font-size="13" font-weight="bold">1</text>
+
+  <!-- الحاجز 2 -->
+  <rect x="170" y="254" width="55" height="8" rx="3" fill="#27ae60"/>
+  <line x1="172" y1="254" x2="172" y2="244" stroke="#555" stroke-width="3"/>
+  <line x1="223" y1="254" x2="223" y2="244" stroke="#555" stroke-width="3"/>
+  <circle cx="197" cy="243" r="14" fill="#1a2d70"/>
+  <text x="197" y="248" text-anchor="middle" fill="white" font-size="13" font-weight="bold">2</text>
+
+  <!-- الحاجز 3 (مزدوج) -->
+  <rect x="90" y="328" width="55" height="7" rx="3" fill="#8e44ad"/>
+  <rect x="90" y="340" width="55" height="7" rx="3" fill="#8e44ad" opacity=".7"/>
+  <line x1="92" y1="328" x2="92" y2="318" stroke="#555" stroke-width="3"/>
+  <line x1="143" y1="328" x2="143" y2="318" stroke="#555" stroke-width="3"/>
+  <circle cx="117" cy="317" r="14" fill="#1a2d70"/>
+  <text x="117" y="322" text-anchor="middle" fill="white" font-size="13" font-weight="bold">3</text>
+
+  <!-- الحاجز 4 -->
+  <rect x="172" y="424" width="55" height="8" rx="3" fill="#e67e22"/>
+  <line x1="174" y1="424" x2="174" y2="414" stroke="#555" stroke-width="3"/>
+  <line x1="225" y1="424" x2="225" y2="414" stroke="#555" stroke-width="3"/>
+  <circle cx="199" cy="413" r="14" fill="#1a2d70"/>
+  <text x="199" y="418" text-anchor="middle" fill="white" font-size="13" font-weight="bold">4</text>
+
+  <!-- الحاجز 5 -->
+  <rect x="270" y="476" width="55" height="8" rx="3" fill="#c0392b"/>
+  <line x1="272" y1="476" x2="272" y2="466" stroke="#555" stroke-width="3"/>
+  <line x1="323" y1="476" x2="323" y2="466" stroke="#555" stroke-width="3"/>
+  <circle cx="297" cy="465" r="14" fill="#1a2d70"/>
+  <text x="297" y="470" text-anchor="middle" fill="white" font-size="13" font-weight="bold">5</text>
+
+  <text x="200" y="550" text-anchor="middle" fill="#888" font-size="10">مربط الواصلية</text>
+</svg>

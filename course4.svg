@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 580" font-family="Arial,sans-serif">
+  <rect width="400" height="580" fill="#f5f0e8"/>
+  <rect x="30" y="50" width="340" height="500" rx="28" fill="#e8dfc8" stroke="#444" stroke-width="6"/>
+  <!-- حشائش -->
+  <circle cx="55" cy="75" r="14" fill="#4a7c59"/><circle cx="68" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="75" r="14" fill="#4a7c59"/><circle cx="332" cy="68" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="505" r="14" fill="#4a7c59"/><circle cx="68" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="345" cy="505" r="14" fill="#4a7c59"/><circle cx="332" cy="512" r="11" fill="#3d6b4a"/>
+  <circle cx="55" cy="150" r="9" fill="#4a7c59"/><circle cx="345" cy="150" r="9" fill="#4a7c59"/>
+  <circle cx="55" cy="300" r="9" fill="#4a7c59"/><circle cx="345" cy="300" r="9" fill="#4a7c59"/>
+  <circle cx="55" cy="440" r="9" fill="#4a7c59"/><circle cx="345" cy="440" r="9" fill="#4a7c59"/>
+  <circle cx="200" cy="65" r="10" fill="#4a7c59"/><circle cx="200" cy="515" r="10" fill="#4a7c59"/>
+  <!-- بداية/نهاية -->
+  <rect x="160" y="38" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="56" text-anchor="middle" fill="white" font-size="13" font-weight="bold">البداية</text>
+  <rect x="160" y="516" width="80" height="26" rx="6" fill="#1a2d70"/>
+  <text x="200" y="534" text-anchor="middle" fill="white" font-size="13" font-weight="bold">النهاية</text>
+
+  <!-- مسارات معقدة -->
+  <path d="M200 90 Q140 110 110 160" fill="none" stroke="#2980b9" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M110 160 Q80 210 140 240" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M140 240 Q200 260 270 230" fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M270 230 Q330 210 320 290" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M320 290 Q310 350 230 360" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M230 360 Q160 370 130 320" fill="none" stroke="#16a085" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M130 320 Q80 290 80 390" fill="none" stroke="#d35400" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M80 390 Q85 450 160 460" fill="none" stroke="#7f8c8d" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M160 460 Q250 470 270 430" fill="none" stroke="#95a5a6" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <path d="M270 430 Q320 400 310 490" fill="none" stroke="#888" stroke-width="2.5" stroke-dasharray="7,5"/>
+
+  <!-- الحواجز 1-8 -->
+  <!-- 1 -->
+  <rect x="82" y="154" width="55" height="8" rx="3" fill="#2980b9"/>
+  <rect x="82" y="165" width="55" height="8" rx="3" fill="#2980b9" opacity=".5"/>
+  <circle cx="109" cy="143" r="13" fill="#1a2d70"/>
+  <text x="109" y="148" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1</text>
+  <!-- 2 -->
+  <rect x="110" y="234" width="55" height="8" rx="3" fill="#27ae60"/>
+  <circle cx="137" cy="223" r="13" fill="#1a2d70"/>
+  <text x="137" y="228" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2</text>
+  <!-- 3 -->
+  <rect x="240" y="224" width="55" height="8" rx="3" fill="#8e44ad"/>
+  <circle cx="267" cy="213" r="13" fill="#1a2d70"/>
+  <text x="267" y="218" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3</text>
+  <!-- 4 -->
+  <rect x="294" y="284" width="8" height="55" rx="3" fill="#e67e22"/>
+  <circle cx="322" cy="290" r="13" fill="#1a2d70"/>
+  <text x="322" y="295" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4</text>
+  <!-- 5 -->
+  <rect x="200" y="354" width="55" height="8" rx="3" fill="#c0392b"/>
+  <rect x="200" y="365" width="55" height="8" rx="3" fill="#c0392b" opacity=".5"/>
+  <circle cx="227" cy="343" r="13" fill="#1a2d70"/>
+  <text x="227" y="348" text-anchor="middle" fill="white" font-size="12" font-weight="bold">5</text>
+  <!-- 6 -->
+  <rect x="100" y="314" width="55" height="8" rx="3" fill="#16a085"/>
+  <circle cx="127" cy="303" r="13" fill="#1a2d70"/>
+  <text x="127" y="308" text-anchor="middle" fill="white" font-size="12" font-weight="bold">6</text>
+  <!-- 7 -->
+  <rect x="52" y="384" width="8" height="55" rx="3" fill="#d35400"/>
+  <circle cx="80" cy="390" r="13" fill="#1a2d70"/>
+  <text x="80" y="395" text-anchor="middle" fill="white" font-size="12" font-weight="bold">7</text>
+  <!-- 8 -->
+  <rect x="130" y="454" width="55" height="8" rx="3" fill="#7f8c8d"/>
+  <circle cx="157" cy="443" r="13" fill="#1a2d70"/>
+  <text x="157" y="448" text-anchor="middle" fill="white" font-size="12" font-weight="bold">8</text>
+
+  <!-- علامة FEI -->
+  <rect x="290" y="90" width="65" height="22" rx="5" fill="#1a2d70" opacity=".8"/>
+  <text x="322" y="106" text-anchor="middle" fill="white" font-size="11" font-weight="bold">⭐ FEI</text>
+
+  <text x="200" y="550" text-anchor="middle" fill="#888" font-size="10">مربط الواصلية</text>
+</svg>
