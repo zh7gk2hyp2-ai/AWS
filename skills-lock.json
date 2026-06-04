@@ -97,6 +97,12 @@
       "skillPath": "skills/voltagent-best-practices/SKILL.md",
       "computedHash": "bae60c5ed59943c3641a6be41c29497e34a2355cbee05985fba465b92263ea53"
     },
+    "voltagent-docs-bundle": {
+      "source": "VoltAgent/skills",
+      "sourceType": "github",
+      "skillPath": "skills/voltagent-docs-bundle/SKILL.md",
+      "computedHash": "6e59f523ae46b69571cda2d68f72de4e770824c1eee5025288a13f6dd36ebee3"
+    },
     "web-artifacts-builder": {
       "source": "anthropics/skills",
       "sourceType": "github",
