@@ -91,6 +91,12 @@
       "skillPath": "skills/pptx/SKILL.md",
       "computedHash": "6b8b859d26f93aa059c9870d1ab76b44ab69e3d6757ce4a03cc94cb760888073"
     },
+    "react-native-best-practices": {
+      "source": "callstackincubator/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-best-practices/SKILL.md",
+      "computedHash": "15bd57b18d9ad0dcd003bd2c7ec6ed17d813cc671dd4d423e1d904d2a7b9d2bb"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
