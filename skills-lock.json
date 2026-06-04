@@ -97,6 +97,12 @@
       "skillPath": "skills/github/SKILL.md",
       "computedHash": "32131aefe2317287d83e1d3ed5b2a83ca5b1a08142ee3b9bb4fc9d54ea348c31"
     },
+    "github-actions": {
+      "source": "callstackincubator/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/github-actions/SKILL.md",
+      "computedHash": "3632dc997b2d8810bdc753173e269dfc0fd40b6fe6be0dd27b8f2abc58e47ada"
+    },
     "internal-comms": {
       "source": "anthropics/skills",
       "sourceType": "github",
@@ -145,6 +151,12 @@
       "skillPath": "skills/react-native-best-practices/SKILL.md",
       "computedHash": "15bd57b18d9ad0dcd003bd2c7ec6ed17d813cc671dd4d423e1d904d2a7b9d2bb"
     },
+    "react-native-brownfield-migration": {
+      "source": "callstackincubator/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-brownfield-migration/SKILL.md",
+      "computedHash": "06fd211ff8a28733f0d82853361ed7ab6e215aba18593e2195aebebea33f9c26"
+    },
     "run-models": {
       "source": "replicate/skills",
       "sourceType": "github",
@@ -186,6 +198,12 @@
       "sourceType": "github",
       "skillPath": "skills/upgrading-react-native/SKILL.md",
       "computedHash": "a8a0b9ce54dceb45233c3244dfe9aafc43f3cb9f4dad8c466f4091fe4065cdc9"
+    },
+    "validate-skills": {
+      "source": "callstackincubator/agent-skills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/validate-skills/SKILL.md",
+      "computedHash": "aff52c5f1470ceedfa83c6bd7936b5bf70d347d72724585e3a2911d6d009caf4"
     },
     "voltagent-best-practices": {
       "source": "VoltAgent/skills",
