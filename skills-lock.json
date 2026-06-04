@@ -25,6 +25,12 @@
       "skillPath": "skills/claude-api/SKILL.md",
       "computedHash": "954ea4ccdb1aeb5c709f4b23961d4295a20c128b535ac4cbf33bf903f16d3fb4"
     },
+    "create-voltagent": {
+      "source": "VoltAgent/skills",
+      "sourceType": "github",
+      "skillPath": "skills/create-voltagent/SKILL.md",
+      "computedHash": "fd2fc9877afada74de4387c95d74ae7c0ee90723d8f78c2e16730272b5c6a29c"
+    },
     "doc-coauthoring": {
       "source": "anthropics/skills",
       "sourceType": "github",
