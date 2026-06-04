@@ -37,6 +37,12 @@
       "skillPath": "skills/claude-api/SKILL.md",
       "computedHash": "954ea4ccdb1aeb5c709f4b23961d4295a20c128b535ac4cbf33bf903f16d3fb4"
     },
+    "composio": {
+      "source": "ComposioHQ/skills",
+      "sourceType": "github",
+      "skillPath": "skills/composio/SKILL.md",
+      "computedHash": "11b975f122ecbf455b437e4e42ebf8f30fad84220894c3d52549eefea92a7795"
+    },
     "create-voltagent": {
       "source": "VoltAgent/skills",
       "sourceType": "github",
