@@ -1027,6 +1027,12 @@
       "skillPath": "skills/.system/imagegen/SKILL.md",
       "computedHash": "9f14832d6538d83047ef41223ba9b0fb4a8c393d144ad4015ce4c10cc3d5414c"
     },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "9fc469b8e0ee85a7ba2070050997f8e7ebb4ad1d79be3b21770a33392c1e9b93"
+    },
     "insecure-defaults": {
       "source": "trailofbits/skills",
       "sourceType": "github",
