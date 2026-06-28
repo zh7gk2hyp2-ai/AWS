@@ -205,6 +205,12 @@
       "skillPath": ".github/skills/azure-storage-blob-rust/SKILL.md",
       "computedHash": "481889c2a09fd1b7aaf34a7d687de4965fce103810018cd2bee673f2c1d996d3"
     },
+    "banana": {
+      "source": "AgriciDaniel/banana-claude",
+      "sourceType": "github",
+      "skillPath": "skills/banana/SKILL.md",
+      "computedHash": "2da0cab1df619c69881f011d7c33be9d8383ab956fc0efa946aa26f5dba90907"
+    },
     "better-auth-best-practices": {
       "source": "better-auth/skills",
       "sourceType": "github",
