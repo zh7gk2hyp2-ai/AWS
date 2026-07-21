@@ -1,0 +1,23 @@
+{
+  "skill_name": "business-email-drafter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to email my manager to let her know the project is going to be 2 weeks late. It's because we're still waiting on the design team to hand off final assets. I don't want to sound like I'm blaming them but I need to be honest about why.",
+      "expected_output": "2-3 email variations that clearly communicate the delay, explain the dependency on design assets without blaming, propose a new timeline, and maintain a professional/calm tone.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Can you clean up this email I wrote to a client? 'Hi Sarah, just wanted to check in on the proposal I sent last week. Haven't heard back and wondering if you had any questions or concerns. Happy to jump on a call if useful. Thanks'",
+      "expected_output": "2 variations: one light edit preserving the user's voice, one more substantial rewrite. Both should be more confident and have a clearer call to action.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "My vendor just sent me an email saying they need to raise their rates by 20% starting next month. Here's what they wrote: 'Dear valued customer, due to rising operational costs we are implementing a 20% price adjustment effective June 1. We value our long-term partnership and hope to continue working together.' How should I reply? I want to push back but not blow up the relationship.",
+      "expected_output": "2-3 reply variations ranging from soft pushback/negotiation to a firmer counter-proposal, each preserving the relationship while advocating for the user's interests.",
+      "files": []
+    }
+  ]
+}
