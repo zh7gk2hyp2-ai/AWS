@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معمل دهن العود — الصنعة الحرفية</title>
+<meta name="description" content="معمل دهن العود الحرفي: من الأغار إلى التولة، خلطات العنبر والمسك والورد بصناعة يدوية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Markazi+Text:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#e8dcc4; --sand-2:#ddcfb0; --parch:#f1e8d4;
+    --bark:#2e1f12; --bark-2:#4a3420; --walnut:#6b4a2a;
+    --amber:#8a4414; --amber-soft:#d08a3c; --ember:#9c3416;
+    --moss:#5c5a28; --ink:#352616; --ink-2:#5e4a33; --ink-3:#6a5537;
+    --line:#cdbb98; --line-2:#bfa97f;
+    --shadow:0 18px 44px -26px rgba(46,31,18,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  ::selection{background:var(--amber);color:var(--parch)}
+  ::-webkit-scrollbar{width:12px}
+  ::-webkit-scrollbar-track{background:var(--sand-2)}
+  ::-webkit-scrollbar-thumb{background:var(--walnut);border:3px solid var(--sand-2);border-radius:0}
+  body{
+    background:var(--sand);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;
+    font-weight:400;line-height:1.82;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(181,102,29,.05), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(92,90,40,.05), transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+  .disp{font-family:'Rakkas',serif}
+  .mk{font-family:'Markazi Text',serif}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(232,220,196,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Rakkas',serif;font-size:1.55rem;color:var(--bark)}
+  .brand svg{width:30px;height:30px;color:var(--amber)}
+  .navlinks{display:flex;gap:30px;font-family:'Markazi Text';font-weight:500;font-size:1.1rem;color:var(--ink-2)}
+  .navlinks a{transition:color .25s}
+  .navlinks a:hover{color:var(--ember)}
+  @media(max-width:800px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:90px 0 80px;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-10%;left:-6%;width:46%;height:120%;z-index:0;
+    background:radial-gradient(circle,rgba(181,102,29,.12),transparent 65%)}
+  .hero .wrap{position:relative;z-index:1;text-align:center}
+  .seal{width:64px;height:64px;margin:0 auto 26px;color:var(--amber);
+    border:1.5px solid var(--line-2);border-radius:50%;display:grid;place-items:center;background:var(--parch)}
+  .seal svg{width:34px;height:34px}
+  .hero h1{font-family:'Rakkas',serif;font-size:clamp(3rem,9vw,6.4rem);line-height:1;color:var(--bark);margin-bottom:22px;font-weight:400}
+  .hero h1 .amb{color:var(--ember)}
+  .hero .lede{font-family:'Markazi Text',serif;font-weight:500;font-size:clamp(1.3rem,3vw,1.7rem);
+    color:var(--ink-2);max-width:40ch;margin:0 auto 38px;line-height:1.7}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;
+    font-family:'Markazi Text';font-weight:600;font-size:1.15rem;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .3s,color .3s}
+  .btn-amber{background:var(--ember);color:var(--parch);box-shadow:var(--shadow)}
+  .btn-amber:hover{transform:translateY(-3px);background:var(--amber)}
+  .btn-line{border:1.5px solid var(--line-2);color:var(--bark)}
+  .btn-line:hover{border-color:var(--ember);color:var(--ember)}
+  .btn svg{width:18px;height:18px}
+
+  /* ornamental divider */
+  .div-orn{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--walnut);margin:0 0 54px}
+  .div-orn::before,.div-orn::after{content:"";height:1px;width:70px;background:var(--line-2)}
+  .div-orn svg{width:22px;height:22px}
+
+  section{padding:96px 0;position:relative}
+  .sec-head{text-align:center;margin-bottom:56px}
+  .sec-head h2{font-family:'Rakkas',serif;font-size:clamp(2.3rem,5.5vw,3.6rem);color:var(--bark);margin-bottom:12px;font-weight:400}
+  .sec-head p{font-family:'Markazi Text';font-weight:500;font-size:1.25rem;color:var(--ink-2);max-width:48ch;margin:0 auto}
+
+  /* process — alternating hand-drawn cards on a path */
+  .craft{background:
+    linear-gradient(180deg,transparent,rgba(107,74,42,.06)),var(--sand-2)}
+  .steps{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+  .st{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;
+    background:var(--parch);border:1px solid var(--line);padding:28px 30px;position:relative;
+    transition:transform .35s,box-shadow .35s}
+  .st:hover{transform:translateX(-6px);box-shadow:var(--shadow)}
+  .st .ic{width:56px;height:56px;border-radius:50%;background:var(--sand);border:1px solid var(--line-2);
+    display:grid;place-items:center;color:var(--amber);flex-shrink:0}
+  .st .ic svg{width:28px;height:28px}
+  .st h3{font-family:'Rakkas',serif;font-size:1.65rem;color:var(--bark);margin-bottom:4px;font-weight:400}
+  .st p{color:var(--ink-2);font-size:1rem}
+  .st .mk-note{font-family:'Markazi Text';font-weight:600;color:var(--amber);font-size:1.1rem}
+
+  /* blends — ledger rows */
+  .ledger{max-width:900px;margin:0 auto;border:1.5px solid var(--line-2);background:var(--parch)}
+  .row{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;
+    padding:26px 30px;border-bottom:1px solid var(--line);transition:background .3s}
+  .row:last-child{border-bottom:none}
+  .row:hover{background:var(--sand)}
+  .row .glyph{width:50px;height:50px;color:var(--walnut)}
+  .row .glyph svg{width:100%;height:100%}
+  .row h3{font-family:'Rakkas',serif;font-size:1.5rem;color:var(--bark);font-weight:400;margin-bottom:2px}
+  .row .desc{color:var(--ink-2);font-size:.96rem}
+  .row .desc b{font-family:'Markazi Text';font-weight:600;color:var(--amber);font-size:1.05rem}
+  .row .price{text-align:left;font-family:'Rakkas',serif;font-size:1.5rem;color:var(--ember);white-space:nowrap}
+  .row .price small{display:block;font-family:'Tajawal';font-weight:300;color:var(--ink-3);font-size:.75rem;margin-top:2px}
+  @media(max-width:620px){.row{grid-template-columns:auto 1fr;gap:16px}.row .price{grid-column:2;text-align:right;margin-top:6px}}
+
+  /* story */
+  .story{text-align:center;background:var(--bark);color:var(--parch)}
+  .story .wrap{max-width:720px}
+  .story .seal{border-color:rgba(208,138,60,.4);background:transparent;color:var(--amber-soft)}
+  .story blockquote{font-family:'Rakkas',serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.5;margin:24px auto;color:var(--parch);font-weight:400}
+  .story p{font-family:'Markazi Text';font-weight:500;font-size:1.2rem;color:#d8c7a8;max-width:50ch;margin:0 auto}
+
+  /* contact */
+  .contact{background:var(--sand-2)}
+  .contact .wrap{max-width:600px;text-align:center}
+  .contact h2{font-family:'Rakkas',serif;font-size:clamp(2.3rem,5.5vw,3.2rem);color:var(--bark);margin-bottom:10px;font-weight:400}
+  .contact p{font-family:'Markazi Text';font-weight:500;font-size:1.2rem;color:var(--ink-2);margin-bottom:30px}
+  .field{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .field input{flex:1;min-width:210px;background:var(--parch);border:1.5px solid var(--line-2);
+    padding:15px 20px;font-family:'Tajawal';font-size:1rem;color:var(--ink);transition:border .3s}
+  .field input::placeholder{color:var(--ink-3)}
+  .field input:focus{outline:none;border-color:var(--amber)}
+  .meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:44px;font-family:'Markazi Text';font-weight:500}
+  .meta .k{font-family:'Rakkas',serif;color:var(--amber);font-size:1.3rem;margin-bottom:2px}
+  .meta div{color:var(--ink-2);font-size:1.05rem}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);text-align:center;color:var(--ink-3);font-family:'Markazi Text';font-weight:500;font-size:1.05rem}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.2,.8,.2,1),transform .85s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c0 4-5 5-5 10a5 5 0 0 0 10 0c0-5-5-6-5-10z"/></svg>معمل دهن العود</a>
+    <div class="navlinks">
+      <a href="#craft">الصنعة</a>
+      <a href="#blends">الخلطات</a>
+      <a href="#story">الحكاية</a>
+      <a href="#contact">تواصل</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2c0 4-5 5-5 10a5 5 0 0 0 10 0c0-5-5-6-5-10z"/><path d="M12 13c1.5 0 2.5 1 2.5 3"/></svg></div>
+    <h1>من الشجرة<br>إلى <span class="amb">التولة</span></h1>
+    <p class="lede">صنعةٌ يدوية صبورة: نختار الأغار، نقطّره على الحطب، ونعتّقه حتى تنضج رائحته.</p>
+    <div class="cta-row">
+      <a class="btn btn-amber" href="#blends">تصفّح الخلطات
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+      <a class="btn btn-line" href="#craft">كيف نصنعه</a>
+    </div>
+  </div>
+</section>
+
+<section class="craft" id="craft">
+  <div class="wrap">
+    <div class="div-orn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2c0 4-5 5-5 10a5 5 0 0 0 10 0c0-5-5-6-5-10z"/></svg></div>
+    <div class="sec-head reveal">
+      <h2>رحلة الاستخلاص</h2>
+      <p>خمس مراحل بين الخشب الخام والتولة، كلٌّ منها بيدٍ لا تستعجل.</p>
+    </div>
+    <div class="steps">
+      <div class="st reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M12 7c-3 0-5-2-6-4M12 10c3 0 5-2 6-4"/></svg></div>
+        <div><h3>اختيار الأغار</h3><p class="mk-note">المادة الخام الأصيلة</p><p>لا يُستخرج الدهن من أي خشب، بل من أجزاء الأغار الغارقة الثقيلة التي أفرزت راتنجها الداكن ذا الرائحة.</p></div>
+      </div>
+      <div class="st reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14c2-2 4-2 6 0s4 2 6 0 4-2 4-2M4 18c2-2 4-2 6 0s4 2 6 0"/></svg></div>
+        <div><h3>الطحن والنقع</h3><p class="mk-note">صبرٌ قبل النار</p><p>يُطحن الخشب المشبّع ثم يُنقع في الماء أسابيع — وقد يتجاوز الشهر — حتى يلين ويتحرّر زيته.</p></div>
+      </div>
+      <div class="st reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4M8 7h8l-1 6a4 4 0 0 1-6 0zM7 21h10"/></svg></div>
+        <div><h3>التقطير بالبخار</h3><p class="mk-note">قلب العملية</p><p>يُعرّض العود لبخار الماء تحت ضغطٍ عالٍ، فيتصاعد الزيت مع البخار ثم يُجمع ويُفصل عن الماء.</p></div>
+      </div>
+      <div class="st reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2"/></svg></div>
+        <div><h3>التعتيق</h3><p class="mk-note">الزمن شريكٌ في الرائحة</p><p>يُخزّن الدهن في عتمةٍ هادئة شهوراً، فتهدأ حدّته وتتعمّق طبقاته — فكلّما عتُق نضج.</p></div>
+      </div>
+      <div class="st reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6l1 4H8zM8 7h8v11a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3z"/></svg></div>
+        <div><h3>التعبئة في التولة</h3><p class="mk-note">التولة وحدة العطّار</p><p>يُعبّأ الدهن المعتّق في تولاتٍ محكمة، موسومةٍ بنوع العود وسنة تقطيره.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blends">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>دفتر الخلطات</h2>
+      <p>تركيباتٌ نوزنها بالتولة، نبدأ صغيراً ونعدّل حتى تتزن الرائحة.</p>
+    </div>
+    <div class="ledger">
+      <div class="row reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2c0 4-5 5-5 10a5 5 0 0 0 10 0c0-5-5-6-5-10z"/></svg></div>
+        <div><h3>عود هندي معتّق</h3><div class="desc"><b>دهنٌ صافٍ عتيق.</b> زيت عودٍ هندي نقي دون إضافة، دفءٌ خشبيٌّ يدوم على الثوب.</div></div>
+        <div class="price">٣٢٠<small>ر.س / تولة</small></div>
+      </div>
+      <div class="row reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+        <div><h3>مخلط العنبر والمسك</h3><div class="desc"><b>شرقيٌّ دافئ.</b> عنبرٌ رمادي يُذاب في دهن الورد يلتقي مسك الغزال فوق قاعدة العود.</div></div>
+        <div class="price">٢٨٠<small>ر.س / تولة</small></div>
+      </div>
+      <div class="row reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3C8 7 6 9 6 13a6 6 0 0 0 12 0c0-4-2-6-6-10z"/></svg></div>
+        <div><h3>دهن ورد طائفي بالعود</h3><div class="desc"><b>وردٌ على خشب.</b> ورد الطائف المقطّر فوق دهن العود، توازنٌ بين نعومة البتلة وعمق الخشب.</div></div>
+        <div class="price">٣٦٠<small>ر.س / تولة</small></div>
+      </div>
+      <div class="row reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="8" width="10" height="12" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+        <div><h3>مخمرية العود</h3><div class="desc"><b>دهونٌ للبشرة.</b> قاعدةٌ مرطّبة بدهن العود الأبيض وزيت اللوز، أثرٌ قريبٌ طوال اليوم.</div></div>
+        <div class="price">١٤٠<small>ر.س / علبة</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap reveal">
+    <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8 12l3 3 5-6"/></svg></div>
+    <blockquote>العودُ لا يُستعجل،<br>والرائحةُ تُورَّث كما تُصنع.</blockquote>
+    <p>بدأ المعمل بتولةٍ واحدة ووصفةٍ تُنقل همساً بين الأجيال، وما زلنا نقطّر على الحطب ونعتّق في العتمة.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <h2>اطلب خلطتك الخاصة</h2>
+    <p>اترك اسمك ورقمك، ونرتّب لك زيارة المعرض أو تجهيز تولةٍ على ذوقك.</p>
+    <form class="field" onsubmit="return false">
+      <input type="text" placeholder="الاسم" aria-label="الاسم">
+      <input type="tel" placeholder="رقم الجوال" aria-label="رقم الجوال">
+      <button class="btn btn-amber" type="submit">أرسل الطلب</button>
+    </form>
+    <div class="meta">
+      <div><div class="k">المعرض</div>طريق الملك فهد — الرياض</div>
+      <div><div class="k">الهاتف</div>٩٢٠ ٠٠ ٠٠ ٠٠</div>
+      <div><div class="k">الدوام</div>٤ عصراً — ١١ مساءً</div>
+    </div>
+  </div>
+</section>
+
+<footer>معمل دهن العود · صنعةٌ حرفية يدوية · جميع الحقوق محفوظة</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
