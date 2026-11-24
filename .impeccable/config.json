@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "oud-lab/direction-1-heritage.html"
+        ],
+        "createdAt": "2026-11-17T12:14:27.968Z",
+        "reason": "design decision: warm ember glow beneath gold CTA fits the dark heritage/oud world; shadow has offset+blur not a flat halo"
+      }
+    ]
+  }
+}
